@@ -9,7 +9,7 @@
       <div v-if="newtag" class="select-group">
         <div class="select-factory">
           <label>工場：</label>
-          <select>
+          <select v-model="selectedFactory">
             <option>L1</option>
             <option>L2</option>
             <option>L3</option>
@@ -22,14 +22,14 @@
         </div>
         <div class="select-zone">
           <label>ゾーン：</label>
-          <select>
+          <select v-model="selectedZone">
             <option>a</option>
             <option>b</option>
           </select>
         </div>
         <div class="select-subject">
           <label>被写体名称：</label>
-          <input list="subjects" />
+          <input list="subjects" v-model="selectedSubject" />
           <datalist id="subjects">
             <option>テンター出ツレ</option>
             <option>テンター入り</option>
@@ -37,14 +37,14 @@
         </div>
         <div class="select-side">
           <label>位置：</label>
-          <select>
+          <select v-model="selectedSide">
             <option>DS</option>
             <option>OS</option>
           </select>
         </div>
         <div class="enter-memo">
           <label>メモ：</label>
-          <input type="text" />
+          <input v-model="memo" type="text" />
         </div>
       </div>
     </div>
@@ -55,12 +55,17 @@
       </div>
       <div v-if="existtag">
         <div class="select-tag">
-          <select>
+          <select v-model="selectedExistTag">
             <option>L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV</option>
           </select>
         </div>
-
       </div>
+    </div>
+    <div v-if="newtag" class="selected-result">
+      <h3>和名タグは {{ selectedFactory }}_{{ selectedZone }}_p3_001_004_{{ selectedSubject }}_{{ memo }}_{{ selectedSide }}_PV です</h3>
+    </div>
+    <div v-if="existtag" class="selected-result">
+      <h3>和名タグは {{ selectedExistTag }} です</h3>
     </div>
   </div>
 
@@ -72,7 +77,13 @@ export default {
   data() {
     return {
       newtag: false,
-      existtag: false
+      existtag: false,
+      selectedFactory: '',
+      selectedZone: '',
+      selectedSubject: '',
+      selectedSide: '',
+      memo: '',
+      selectedExistTag: ''
     }
   },
   methods: {
