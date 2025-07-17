@@ -49,9 +49,16 @@
       </div>
     </div>
     <div>
-      <input type="radio" id="exist" name="tag" @change="onRadioChange">
-      <label for="exist">既存のタグを使う</label>
+      <div class="exist-tag-button">
+        <input type="radio" id="exist" name="tag" @change="onRadioChange">
+        <label for="exist">既存のタグを使う</label>
+      </div>
       <div v-if="existtag">
+        <div class="select-tag">
+          <select>
+            <option>L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV</option>
+          </select>
+        </div>
 
       </div>
     </div>
@@ -114,5 +121,14 @@ export default {
 .new-tag-button {
   display: flex;
   align-items: center;
+}
+.exist-tag-button {
+  display: flex;
+  align-items: center;
+}
+.select-tag {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 </style>
