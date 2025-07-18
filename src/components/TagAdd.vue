@@ -62,11 +62,12 @@
       </div>
     </div>
     <div v-if="newtag" class="selected-result">
-      <h3>和名タグは {{ selectedFactory }}_{{ selectedZone }}_p3_001_004_{{ selectedSubject }}_{{ memo }}_{{ selectedSide }}_PV です</h3>
+      <h3>和名タグは「 {{ selectedFactory }}_{{ selectedZone }}_p3_001_004_{{ selectedSubject }}_{{ memo }}_{{ selectedSide }}_PV 」です</h3>
     </div>
     <div v-if="existtag" class="selected-result">
-      <h3>和名タグは {{ selectedExistTag }} です</h3>
+      <h3>和名タグは「 {{ selectedExistTag }} 」です</h3>
     </div>
+    <button>OK</button>
   </div>
 
 </template>
@@ -102,6 +103,27 @@ export default {
 </script>
 
 <style scoped>
+body {
+  margin: 0;
+}
+h2 {
+  position: relative;
+  text-align: left;
+  margin-left: 30px;
+  margin-top: 0;
+  padding-bottom: 4px;
+}
+h2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 120px;
+  height: 3px;
+  background: #FFD700;
+}
+
 .radio-group {
   display: flex;
   flex-direction: column;
@@ -141,5 +163,15 @@ export default {
   display: flex;
   gap: 8px;
   margin-bottom: 8px;
+}
+button {
+  position: fixed;
+  right: 400px;
+  bottom: 100px;
+  z-index: 100;
+  width: 80px;
+  height: 30px;
+  font-size: 1rem;
+  font-weight: bold;
 }
 </style>
