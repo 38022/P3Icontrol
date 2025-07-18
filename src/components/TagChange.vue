@@ -18,7 +18,8 @@ export default {
   name: 'TagChange',
   data() {
     return {
-      tagsList: ['L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV']
+      tagsList: ['L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV'],
+      selectedTag: ''
     }
   }
 }
