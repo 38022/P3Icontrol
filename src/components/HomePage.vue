@@ -4,6 +4,9 @@
     <button @click="$router.push('/tag')">タグ管理</button>
     <button>P3I設定</button>
   </div>
+  <div class="p3-status">
+    <p>P3稼働状況</p>
+  </div>
 </template>
 
 <script>
@@ -35,5 +38,8 @@ export default {
 .button-group button:hover {
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   background: linear-gradient(180deg, #f8f8f8 0%, #ffff7c 100%);
+}
+.p3-status p {
+  margin-top: -250px;
 }
 </style>
