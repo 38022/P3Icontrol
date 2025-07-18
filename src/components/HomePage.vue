@@ -2,7 +2,7 @@
   <div class="button-group">
     <button @click="$router.push('/recipe')">レシピ管理</button>
     <button @click="$router.push('/tag')">タグ管理</button>
-    <button>P3I設定</button>
+    <button @click="$router.push('/setteing')">P3I設定</button>
   </div>
   <div class="p3-status">
     <p>P3稼働状況</p>

@@ -10,29 +10,26 @@
         <div class="select-factory">
           <label>工場：</label>
           <select v-model="selectedFactory">
-            <option>L1</option>
-            <option>L2</option>
-            <option>L3</option>
-            <option>L4</option>
-            <option>L5</option>
-            <option>L6</option>
-            <option>L7</option>
-            <option>L8</option>
+            <option v-for="factory in factoryList" :key="factory" :value="factory">
+              {{ factory }}
+            </option>
           </select>
         </div>
         <div class="select-zone">
           <label>ゾーン：</label>
           <select v-model="selectedZone">
-            <option>a</option>
-            <option>b</option>
+            <option v-for="zone in zoneList" :key="zone" :value="zone">
+              {{ zone }}
+            </option>
           </select>
         </div>
         <div class="select-subject">
           <label>被写体名称：</label>
           <input list="subjects" v-model="selectedSubject" />
           <datalist id="subjects">
-            <option>テンター出ツレ</option>
-            <option>テンター入り</option>
+            <option v-for="subjects in subjectsList" :key="subjects" :value="subjects">
+              {{ subjects }}
+            </option>
           </datalist>
         </div>
         <div class="select-side">
@@ -44,7 +41,7 @@
         </div>
         <div class="enter-memo">
           <label>メモ：</label>
-          <input v-model="memo" type="text" />
+          <input v-model="memo" type="text" placeholder="必須"/>
         </div>
       </div>
     </div>
@@ -56,7 +53,9 @@
       <div v-if="existtag">
         <div class="select-tag">
           <select v-model="selectedExistTag">
-            <option>L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV</option>
+            <option v-for="tags in tagsList" :key="tags" :value="tags">
+              {{ tags }}
+            </option>
           </select>
         </div>
       </div>
@@ -67,7 +66,7 @@
     <div v-if="existtag" class="selected-result">
       <h3>和名タグは「 {{ selectedExistTag }} 」です</h3>
     </div>
-    <button>OK</button>
+    <button :disabled="newtag && memo === ''">OK</button>
   </div>
 
 </template>
@@ -80,11 +79,15 @@ export default {
       newtag: false,
       existtag: false,
       selectedFactory: '',
+      factoryList: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8'],
       selectedZone: '',
+      zoneList: ['a', 'b'],
       selectedSubject: '',
+      subjectsList: ['テンター出ツレ', 'テンター入り'],
       selectedSide: '',
       memo: '',
-      selectedExistTag: ''
+      selectedExistTag: '',
+      tagsList: ['L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV']
     }
   },
   methods: {
