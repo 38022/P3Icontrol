@@ -5,7 +5,6 @@
     <button @click="$router.push('/tag/change')">タグ変更</button>
     <button @click="$router.push('/tag/delete')">タグ削除</button>
   </div>
-
 </template>
 
 <style scoped>
