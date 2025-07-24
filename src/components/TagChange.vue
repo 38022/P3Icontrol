@@ -33,8 +33,9 @@
         <label>被写体名称：</label>
         <input list="subjects" v-model="selectedSubject" />
         <datalist id="subjects">
-          <option v-for="subjects in subjectsList" :key="subjects" :value="subjects">
-            {{ subjects }}
+          <option v-for="subject in subjectsList" :key="subject" :value="subject">
+            {{ subject }}
+            <!-- 選択したタグから被写体名称を抜き出して初期値に設定はできるが選択肢が表示されなくなる。おそらく日本語なのが原因でブラウザ上の問題。 -->
           </option>
         </datalist>
       </div>
@@ -49,6 +50,7 @@
         <label>メモ：</label>
         <input v-model="memo" type="text" placeholder="必須"/>
       </div>
+      <button>変更</button>
     </div>
   </div>
 </template>
@@ -69,6 +71,15 @@ export default {
       selectedSide: '',
       memo: '',
       showEdit: false
+    }
+  },
+  watch: {
+    selectedTag(newVal) {
+      this.selectedFactory = newVal ? newVal.split('_')[0] : '';
+      this.selectedZone = newVal ? newVal.split('_')[1] : '';
+      this.selectedSubject = newVal ? newVal.split('_')[5] : '';
+      this.selectedSide = newVal ? newVal.split('_')[7] : '';
+      this.memo = newVal ? newVal.split('_')[6] : '';
     }
   }
 }
