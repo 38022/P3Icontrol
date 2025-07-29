@@ -1,8 +1,12 @@
 <template>
   <div class="button-group">
-    <button @click="$router.push('/recipe')">レシピ管理</button>
-    <button @click="$router.push('/tag')">タグ管理</button>
-    <button @click="$router.push('/setteing')">P3I設定</button>
+    <!-- <button @click="$router.push('/recipe')">レシピ管理</button> -->
+    <!-- <button @click="$router.push('/tag')">タグ管理</button> -->
+    <button @click="$router.push('/setting')">システム設定</button>
+    <button @click="$router.push('/log')">システムログ</button>
+    <button @click="$router.push('/recipeDB')">レシピDB操作</button>
+    <button @click="$router.push('/tag')">タグ操作</button>
+    <button @click="$router.push('/approval')">承認待ち</button>
   </div>
   <div class="p3-status">
     <p>P3稼働状況</p>
@@ -22,7 +26,7 @@ export default {
   gap: 24px;
   align-items: flex-start;
   margin-left: 150px;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 .button-group button {
   width: 150px;
@@ -40,6 +44,6 @@ export default {
   background: linear-gradient(180deg, #f8f8f8 0%, #ffff7c 100%);
 }
 .p3-status p {
-  margin-top: -250px;
+  margin-top: -350px;
 }
 </style>

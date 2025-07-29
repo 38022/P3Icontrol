@@ -1,5 +1,5 @@
 <template>
-  <h2>タグ追加</h2>
+  <h2>設定追加</h2>
   <div class="radio-group">
     <div class="new-tag">
       <div class="new-tag-button">
