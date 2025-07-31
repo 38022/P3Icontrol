@@ -6,6 +6,8 @@ import HomePage from '../components/HomePage.vue'
 // import RecipeChange from '../components/RecipeChange.vue'
 // import RecipeDelete from '../components/RecipeDelete.vue'
 import SystemSetting from '../components/SystemSetting.vue'
+import TagInfo from '../components/TagInfo.vue'
+import CameraInfo from '../components/CameraInfo.vue'
 import SystemLog from '../components/SystemLog.vue'
 import RecipeDB from '../components/RecipeDB.vue'
 import TagControl from '../components/TagControl.vue'
@@ -23,6 +25,18 @@ const routes = [
   // { path: '/recipe/change', component: RecipeChange },
   // { path: '/recipe/delete', component: RecipeDelete },
   { path: '/setting', component: SystemSetting },
+  {
+    path: '/taginfo/:no/:tag/:camera',
+    name: 'TagInfo',
+    component: TagInfo,
+    props: route => ({ tag: route.params.tag, camera: route.params.camera })
+  },
+  {
+    path: '/camerainfo/:no/:camera/:tag',
+    name: 'CameraInfo',
+    component: CameraInfo,
+    props: route => ({ camera: route.params.camera, tag: route.params.tag })
+  },
   { path: '/log', component: SystemLog },
   { path: '/recipeDB', component: RecipeDB },
   { path: '/tag', component: TagControl },

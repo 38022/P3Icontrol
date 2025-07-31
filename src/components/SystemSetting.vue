@@ -18,9 +18,21 @@
         <tr v-for="(row, i) in tableData" :key="i">
           <td>{{ row.enabled }}</td>
           <td>{{ row.no }}</td>
-          <td>{{ row.tag }}</td>
+          <td>
+            <router-link
+              :to="{ name: 'TagInfo', params: { no: row.no, tag: encodeURIComponent(row.tag), camera: encodeURIComponent(row.camera) } }"
+            >
+              {{ row.tag }}
+            </router-link>
+          </td>
           <td>{{ row.recipeId }}</td>
-          <td>{{ row.camera }}</td>
+          <td>
+            <router-link
+              :to="{ name: 'CameraInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag) } }"
+            >
+              {{ row.camera }}
+            </router-link>
+          </td>
           <td>{{ row.updatedAt }}</td>
           <td>{{ row.createdAt }}</td>
           <td>{{ row.status }}</td>
