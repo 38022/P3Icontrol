@@ -10,6 +10,7 @@
   </div>
   <div class="p3-status">
     <p>P3稼働状況</p>
+    <img src="@/assets/status_image.png" alt="稼働状況イメージ" class="status-image" />
   </div>
 </template>
 
@@ -43,7 +44,20 @@ export default {
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   background: linear-gradient(180deg, #f8f8f8 0%, #ffff7c 100%);
 }
+.p3-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 600px;
+  margin-top: -400px;
+}
 .p3-status p {
-  margin-top: -350px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.p3-status .status-image {
+  margin-top: 0;
+  width: 300px;
+  height: auto;
 }
 </style>
