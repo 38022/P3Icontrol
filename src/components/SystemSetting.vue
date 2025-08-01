@@ -25,7 +25,13 @@
               {{ row.tag }}
             </router-link>
           </td>
-          <td>{{ row.recipeId }}</td>
+          <td>
+            <router-link
+              :to="{ name: 'RecipeInfo', params: { no: row.no, recipeId: encodeURIComponent(row.recipeId), tag: encodeURIComponent(row.tag) } }"
+            >
+              {{ row.recipeId }}
+            </router-link>
+            </td>
           <td>
             <router-link
               :to="{ name: 'CameraInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag) } }"
@@ -37,7 +43,12 @@
           <td>{{ row.createdAt }}</td>
           <td>{{ row.status }}</td>
           <td>
-            <router-link :to="`/edit/${row.no}`">編集</router-link>
+            <router-link
+             :to="{ name: 'SettingEdit',
+             params: { no: row.no,
+             camera: encodeURIComponent(row.camera),
+             tag: encodeURIComponent(row.tag)
+             } }">編集</router-link>
           </td>
           <td>
             <router-link :to="`/delete/${row.no}`">削除</router-link>
