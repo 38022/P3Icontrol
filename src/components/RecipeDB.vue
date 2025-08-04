@@ -5,7 +5,7 @@
       <button @click="$router.push('/recipeDB/recipeHistory')">レシピ更新履歴</button>
     </div>
     <div class="recipe-add">
-      <button>レシピ追加</button>
+      <button @click="$router.push('/recipeDB/recipeAdd')">レシピ追加</button>
     </div>
     <div class="recipe-edit">
       <button>レシピ変更</button>
