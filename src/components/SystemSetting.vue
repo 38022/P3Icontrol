@@ -51,7 +51,12 @@
              } }">編集</router-link>
           </td>
           <td>
-            <router-link :to="`/delete/${row.no}`">削除</router-link>
+            <router-link :to="{ name: 'SettingDelete',
+             params: { no: row.no,
+             camera: encodeURIComponent(row.camera),
+             tag: encodeURIComponent(row.tag),
+             recipeId: encodeURIComponent(row.recipeId)
+             } }">削除</router-link>
           </td>
           <td>
             <router-link :to="`/history/${row.no}`">編集履歴</router-link>

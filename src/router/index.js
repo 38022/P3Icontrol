@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
 // import RecipeControl from '../components/RecipeControl.vue'
 // import RecipeAdd from '../components/RecipeAdd.vue'
-// import RecipeHistory from '../components/RecipeHistory.vue'
+import RecipeHistory from '../components/RecipeHistory.vue'
 // import RecipeChange from '../components/RecipeChange.vue'
-// import RecipeDelete from '../components/RecipeDelete.vue'
+import SettingDelete from '../components/SettingDelete.vue'
 import SystemSetting from '../components/SystemSetting.vue'
 import SettingEdit from '../components/SettingEdit.vue'
 import TagInfo from '../components/TagInfo.vue'
@@ -23,9 +23,13 @@ const routes = [
   { path: '/', component: HomePage },
   // { path: '/recipe', component: RecipeControl },
   // { path: '/recipe/add', component: RecipeAdd },
-  // { path: '/recipe/history', component: RecipeHistory },
+  
   // { path: '/recipe/change', component: RecipeChange },
-  // { path: '/recipe/delete', component: RecipeDelete },
+  { path: '/settingDelete/:no/:tag/:camera/:recipeId',
+    name: 'SettingDelete',
+    component: SettingDelete,
+    props: route => ({ no: route.params.no, tag: route.params.tag, camera: route.params.camera, recipeId: route.params.recipeId })
+   },
   { path: '/setting', component: SystemSetting },
   {
     path: '/settingEdit/:no/:tag/:camera',
@@ -53,6 +57,7 @@ const routes = [
   },
   { path: '/log', component: SystemLog },
   { path: '/recipeDB', component: RecipeDB },
+  { path: '/recipeDB/recipeHistory', component: RecipeHistory },
   { path: '/tag', component: TagControl },
   { path: '/settingAdd', component: SettingAdd },
   { path: '/tag/history', component: TagHistory },
