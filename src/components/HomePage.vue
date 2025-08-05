@@ -194,20 +194,26 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 350px;
 }
 .status-table {
   border-collapse: collapse;
   background: #fff;
   min-width: 240px;
-  margin-bottom: 0;
+  min-width: 0;
+  width: 100%;
+  table-layout: fixed;
 }
 .status-table td {
   border: 2px solid #222;
-  padding: 8px 24px;
+  padding: 8px 8px;
   text-align: center;
   font-size: 1.2rem;
-  min-width: 60px;
+  min-width: 0;
   height: 36px;
+  word-break: break-all;
 }
 .status-table .line-label {
   font-weight: bold;
