@@ -185,23 +185,31 @@ export default {
   text-align: left;
 }
 
+:global(html), :global(body) {
+  height: 100%;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
 .home-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 
 .content-area {
   display: flex;
   flex-direction: row;
   width: 100vw;
-  padding-top: 64px; /* タイトル帯の高さ分だけ下げる */
+  height: calc(100vh - 64px); /* 追加 */
   box-sizing: border-box;
 }
 
 .sidebar {
-  margin-top: 0;
+  margin-top: 64px;
   margin-left: 60px;
   height: calc(100vh - 64px);
   display: flex;
@@ -247,11 +255,15 @@ export default {
 
 .main-content {
   margin-left: 80px;
-  margin-top: 0;
-  height: calc(100vh - 64px);
+  margin-top: 64px;
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background: #f7f7f7;
+  box-sizing: border-box;
 }
 
 .status-table-area {
@@ -281,10 +293,11 @@ export default {
 }
 .status-table td {
   border: 2px solid #222;
-  padding: 8px 8px;
+  padding: 0;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   min-width: 0;
+  width: 70px;
   height: 36px;
   word-break: break-all;
 }
@@ -292,6 +305,7 @@ export default {
   font-weight: bold;
   background: #fff;
   min-width: 40px;
+  width: 40px;
 }
 .status-table .error {
   background: #f7bcbc;
