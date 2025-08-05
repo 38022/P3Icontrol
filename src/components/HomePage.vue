@@ -39,9 +39,36 @@
       </div>
     </div>
     <div class="main-content">
-        <h2 class="status-title">P3稼働状況</h2>
-        <div class="status-table-area">
-          <div class="status-table-block" v-for="line in lines" :key="line.name">
+      <h2 class="status-title">P3稼働状況</h2>
+      <div class="status-table-area">
+        <div class="status-table-column">
+          <div class="status-table-block" v-for="line in lines.slice(0, 3)" :key="line.name">
+            <table class="status-table">
+              <tbody>
+                <tr v-for="(cam, i) in line.cameras" :key="cam.name">
+                  <td v-if="i === 0" class="line-label" :rowspan="line.cameras.length">{{ line.name }}</td>
+                  <td>{{ cam.name }}</td>
+                  <td :class="{ error: cam.status === 'エラー' }">{{ cam.status }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="status-table-column">
+          <div class="status-table-block" v-for="line in lines.slice(3, 6)" :key="line.name">
+            <table class="status-table">
+              <tbody>
+                <tr v-for="(cam, i) in line.cameras" :key="cam.name">
+                  <td v-if="i === 0" class="line-label" :rowspan="line.cameras.length">{{ line.name }}</td>
+                  <td>{{ cam.name }}</td>
+                  <td :class="{ error: cam.status === 'エラー' }">{{ cam.status }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="status-table-column">
+          <div class="status-table-block" v-for="line in lines.slice(6)" :key="line.name">
             <table class="status-table">
               <tbody>
                 <tr v-for="(cam, i) in line.cameras" :key="cam.name">
@@ -54,6 +81,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
 </template>
@@ -88,8 +116,50 @@ export default {
             { name: 'CAM1', status: '正常' },
             { name: '・・・', status: '' }
           ]
+        },
+        {
+          name: 'L4',
+          cameras: [
+            { name: 'CAM1', status: '正常' },
+            { name: 'CAM2', status: '正常' },
+            { name: 'CAM3', status: '正常' },
+            { name: '・・・', status: '' }
+          ]
+        },
+        {
+          name: 'L5',
+          cameras: [
+            { name: 'CAM1', status: '正常' },
+            { name: 'CAM2', status: 'エラー' },
+            { name: 'CAM3', status: '無効' },
+            { name: '・・・', status: '' }
+          ]
+        },
+        {
+          name: 'L6',
+          cameras: [
+            { name: 'CAM1', status: '正常' },
+            { name: '・・・', status: '' }
+          ]
+        },
+        {
+          name: 'L7',
+          cameras: [
+            { name: 'CAM1', status: '正常' },
+            { name: 'CAM2', status: '正常' },
+            { name: 'CAM3', status: '正常' },
+            { name: '・・・', status: '' }
+          ]
+        },
+        {
+          name: 'L8',
+          cameras: [
+            { name: 'CAM1', status: '正常' },
+            { name: 'CAM2', status: 'エラー' },
+            { name: 'CAM3', status: '無効' },
+            { name: '・・・', status: '' }
+          ]
         }
-        // 必要に応じてL4, L5...を追加
       ]
     }
   }
@@ -186,22 +256,25 @@ export default {
 
 .status-table-area {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* 横並び */
   gap: 48px;
   margin-top: 8px;
+}
+.status-table-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 .status-table-block {
   display: flex;
   flex-direction: column;
-  gap: 24px;
   max-height: 200px;
   overflow-y: auto;
-  width: 350px;
+  width: 260px;
 }
 .status-table {
   border-collapse: collapse;
   background: #fff;
-  min-width: 240px;
   min-width: 0;
   width: 100%;
   table-layout: fixed;
