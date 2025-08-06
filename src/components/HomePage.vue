@@ -167,24 +167,6 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  background: #fff86a;
-  color: #222;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0;
-  padding: 18px 0 18px 24px;
-  border-radius: 0;
-  box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  z-index: 100;
-  text-align: left;
-}
-
 :global(html), :global(body) {
   height: 100%;
   background: #f7f7f7;
@@ -197,21 +179,41 @@ export default {
   background: #f7f7f7;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
 }
 
 .content-area {
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  height: calc(100vh - 64px); /* 追加 */
+  width: 100%;
+  min-height: 0;
   box-sizing: border-box;
 }
 
 .sidebar {
-  margin-top: 64px;
+  margin-top: 40px;
   margin-left: 60px;
-  height: calc(100vh - 64px);
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -255,7 +257,7 @@ export default {
 
 .main-content {
   margin-left: 80px;
-  margin-top: 64px;
+  margin-top: 0;
   flex: 1 1 0;
   min-height: 0;
   width: 100%;
@@ -266,9 +268,17 @@ export default {
   box-sizing: border-box;
 }
 
+.status-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: left;
+  width: 100%;
+}
+
 .status-table-area {
   display: flex;
-  flex-direction: row; /* 横並び */
+  flex-direction: row;
   gap: 48px;
   margin-top: 8px;
 }
