@@ -1,57 +1,99 @@
 <template>
-  <h2>レシピDB操作</h2>
-  <div class="button-group">
-    <div class="recipe-history">
-      <button @click="$router.push('/recipeDB/recipeHistory')">レシピ更新履歴</button>
-    </div>
-    <div class="recipe-add">
-      <button @click="$router.push('/recipeDB/recipeAdd')">レシピ追加</button>
-    </div>
-    <div class="recipe-edit">
-      <button>レシピ変更</button>
-    </div>
+  <div class="recipe-db-page">
+    <div class="header">
+      <h2 class="title">レシピDB操作</h2>
+    </div>    
+    <div class="button-group">
+      <router-link to="/recipeDB/recipeHistory" class="menu-item-link">
+        <button class="menu-item">
+          <img src="@/assets/log_icon.png" alt="レシピ更新履歴" />
+          <span>レシピ更新履歴</span>
+        </button>
+      </router-link>
+      <router-link to="/recipeDB/recipeAdd" class="menu-item-link">
+        <button class="menu-item">
+          <img src="@/assets/add_icon.png" alt="レシピ追加" />
+          <span>レシピ追加</span>
+        </button>
+      </router-link>
+      <router-link to="/recipeDB/recipeChange" class="menu-item-link">
+        <button class="menu-item">
+          <img src="@/assets/recipe_icon.png" alt="レシピ変更" />
+          <span>レシピ変更</span>
+        </button>
+      </router-link>
+  </div>
   </div>
 </template>
 
 <style scoped>
-h2 {
-  position: relative;
-  text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
-}
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background: #FFD700;
-}
-.button-group {
+.recipe-db-page {
+  min-height: 100vh;
+  background: #f7f7f7;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  align-items: flex-start;
-  margin-left: 150px;
-  margin-top: 100px;
+  width: 100%;
 }
-.button-group button {
-  width: 150px;
-  height: 60px;
-  font-size: 1rem;
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
   font-weight: bold;
-  background: linear-gradient(180deg, #fff 0%, #f4f8b4 100%);
-  border: 2px solid #f8f433;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: box-shadow 0.2s;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
 }
-.button-group button:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  background: linear-gradient(180deg, #f8f8f8 0%, #ffff7c 100%);
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  margin-left: 60px;
+  margin-top: 60px;
 }
+
+.menu-item-link {
+  text-decoration: none;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  height: 140px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  gap: 12px;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.menu-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  background: #fffbe0;
+}
+
+.menu-item img {
+  width: 48px;
+  height: 48px;
+}
+
 </style>
