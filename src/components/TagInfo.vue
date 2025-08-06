@@ -1,11 +1,15 @@
 <template>
-  <h2>出力タグ情報：{{ decodedTag }}</h2>
-  <div class="display-info">
-    <p>和名タグ名：{{ decodedTag }}</p>
-    <p>英名タグ名：</p>
-    <p>紐づいたカメラ名：{{ decodedCamera }}</p>
-    <p>最終出力日時：</p>
-    <p>レシピ変更履歴：</p>
+  <div class="tag-info-page">
+    <div class="header">
+      <h2 class="title">出力タグ情報：{{ decodedTag }}</h2>
+    </div>
+    <div class="display-info">
+      <p>和名タグ名：{{ decodedTag }}</p>
+      <p>英名タグ名：</p>
+      <p>紐づいたカメラ名：{{ decodedCamera }}</p>
+      <p>最終出力日時：</p>
+      <p>レシピ変更履歴：</p>
+    </div>
   </div>
 </template>
 
@@ -34,27 +38,38 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  position: relative;
+.tag-info-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
 }
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 1000px;
-  height: 3px;
-  background: #FFD700;
-}
+
 .display-info {
   text-align: left;
   margin-left: 60px;
-  margin-top: 100px;
+  margin-top: 60px;
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
 }
