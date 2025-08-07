@@ -1,50 +1,54 @@
 <template>
-  <h2>設定編集</h2>
-  <div class="display-info">
-    <div class="display-tag">
-      <p>和名タグ名：{{ decodedTag }}</p>
+  <div class="setting-edit-page">
+    <div class="header">
+      <h2 class="title">設定編集</h2>
     </div>
-    <div class="display-camera">
-      <p>カメラ名：{{ decodedCamera }}</p>
-    </div>
-    <div class="display-recipe">
-      <label>レシピID：</label>
-      <select v-model="selectedRecipe">
-        <option v-for="recipe in recipeList" :key="recipe" :value="recipe">
-          {{ recipe }}
-        </option>
-      </select>
-    </div>
-    <div class="valid-switch">
-      <label for="valid-check">有効：</label>
-      <input id="valid-check" type="checkbox" v-model="isValid" />
-    </div>
-    <div class="subject-radio-group">
-      <div class="subject-radio">
-        <input type="radio" id="subject-change"
-          :checked="subjectChanged === true"
-          @click="toggleSubjectChanged" />
-        <!-- 2回クリックしたら選択解除 -->
-        <label for="subject-change">被写体変更あり</label>
+    <div class="display-info">
+      <div class="display-tag">
+        <p>和名タグ名：{{ decodedTag }}</p>
       </div>
-      <div class="select-subject-group" v-if="subjectChanged === true">
-        <div class="select-subject">
-          <label>被写体名称：</label>
-          <select v-model="selectedSubject">
-            <option v-for="subject in subjectList" :key="subject" :value="subject">
-              {{ subject }}
-            </option>
-          </select>
-        </div>
-        <div class="tag-result">
-          <h4>和名タグは「 {{ decodedTag }} 」です</h4>
-          <!-- ☆タグ内の被写体名だけ変更 -->
-        </div>
+      <div class="display-camera">
+        <p>カメラ名：{{ decodedCamera }}</p>
       </div>
+      <div class="display-recipe">
+        <label>レシピID：</label>
+        <select v-model="selectedRecipe">
+          <option v-for="recipe in recipeList" :key="recipe" :value="recipe">
+            {{ recipe }}
+          </option>
+        </select>
+      </div>
+      <div class="valid-switch">
+        <label for="valid-check">有効：</label>
+        <input id="valid-check" type="checkbox" v-model="isValid" />
+      </div>
+      <div class="subject-radio-group">
+        <div class="subject-radio">
+          <input type="radio" id="subject-change"
+            :checked="subjectChanged === true"
+            @click="toggleSubjectChanged" />
+          <!-- 2回クリックしたら選択解除 -->
+          <label for="subject-change">被写体変更あり</label>
+        </div>
+        <div class="select-subject-group" v-if="subjectChanged === true">
+          <div class="select-subject">
+            <label>被写体名称：</label>
+            <select v-model="selectedSubject">
+              <option v-for="subject in subjectList" :key="subject" :value="subject">
+                {{ subject }}
+              </option>
+            </select>
+          </div>
+          <div class="tag-result">
+            <h4>和名タグは「 {{ decodedTag }} 」です</h4>
+            <!-- ☆タグ内の被写体名だけ変更 -->
+          </div>
+        </div>
 
+      </div>
     </div>
+    <button>適用</button>
   </div>
-  <button>適用</button>
 </template>
 
 <script>
@@ -87,27 +91,37 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  position: relative;
-  text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
+.tag-info-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 1000px;
-  height: 3px;
-  background: #FFD700;
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
 }
 .display-info {
   text-align: left;
   margin-left: 60px;
-  margin-top: 100px;
+  margin-top: 60px;
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
 }
