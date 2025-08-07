@@ -1,12 +1,12 @@
 <template>
   <div class="system-setting-page">
     <div class="header">
-      <h2 class="title">システム設定</h2>
+      <h2 class="title">処理構成</h2>
     </div>
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <span>システム設定</span>
+      <span>処理構成</span>
     </nav>
     <div class="select-area">
       <label class="select-label" for="factor-select">工場を選択</label>
@@ -24,9 +24,9 @@
           <tr>
             <th>有効</th>
             <th>項番</th>
-            <th>出力タグ名</th>
-            <th>レシピID</th>
             <th>カメラ名</th>
+            <th>レシピID</th>
+            <th>出力タグ名</th>
             <th>最終編集日時</th>
             <th>作成日時</th>
             <th>ステータス</th>
@@ -38,9 +38,9 @@
             <td>{{ row.no }}</td>
             <td>
               <router-link
-                :to="{ name: 'TagInfo', params: { no: row.no, tag: encodeURIComponent(row.tag), camera: encodeURIComponent(row.camera) } }"
+                :to="{ name: 'CameraInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag) } }"
               >
-                {{ row.tag }}
+                {{ row.camera }}
               </router-link>
             </td>
             <td>
@@ -49,13 +49,24 @@
               >
                 {{ row.recipeId }}
               </router-link>
-              </td>
+            </td>
             <td>
-              <router-link
-                :to="{ name: 'CameraInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag) } }"
-              >
-                {{ row.camera }}
-              </router-link>
+              <template v-if="Array.isArray(row.tag)">
+                <div v-for="(t, idx) in row.tag" :key="idx">
+                  <router-link
+                    :to="{ name: 'TagInfo', params: { no: row.no, tag: encodeURIComponent(t), camera: encodeURIComponent(row.camera) } }"
+                  >
+                    {{ t }}
+                  </router-link>
+                </div>
+              </template>
+              <template v-else>
+                <router-link
+                  :to="{ name: 'TagInfo', params: { no: row.no, tag: encodeURIComponent(row.tag), camera: encodeURIComponent(row.camera) } }"
+                >
+                  {{ row.tag }}
+                </router-link>
+              </template>
             </td>
             <td>{{ row.updatedAt }}</td>
             <td>{{ row.createdAt }}</td>
@@ -113,7 +124,10 @@ export default {
           {
             enabled: '無効',
             no: 2,
-            tag: 'l1_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
+            tag: [
+              'l1_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
+              'l1_b_p3 _006 _cam001_テンター入り_framesub_OS_pv'
+            ],
             recipeId: 'recipe_id2',
             camera: 'CAM2',
             updatedAt: '2025/8/1 0:00',
