@@ -1,8 +1,15 @@
 <template>
   <div class="setting-add-page">
     <div class="header">
-      <h2 class="title">設定追加</h2>
+      <h2 class="title">被写体追加</h2>
     </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <router-link to="/setting">システム設定</router-link>
+      <span> &gt;</span>
+      <span>被写体追加</span>
+    </nav>
     <div class="select-camera">
       <p>追加するカメラを選択</p>
       <div class="select-camera-row">
@@ -102,6 +109,21 @@ export default {
 </script>
 
 <style scoped>
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
 .setting-add-page {
   min-height: 100vh;
   background: #f7f7f7;
