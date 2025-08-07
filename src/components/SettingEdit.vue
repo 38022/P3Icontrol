@@ -1,8 +1,15 @@
 <template>
   <div class="setting-edit-page">
     <div class="header">
-      <h2 class="title">設定編集</h2>
+      <h2 class="title">被写体編集</h2>
     </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <router-link to="/setting">システム設定</router-link>
+      <span> &gt;</span>
+      <span>被写体編集</span>
+    </nav>
     <div class="display-info">
       <div class="display-tag">
         <p>和名タグ名：{{ decodedTag }}</p>
@@ -21,30 +28,6 @@
       <div class="valid-switch">
         <label for="valid-check">有効：</label>
         <input id="valid-check" type="checkbox" v-model="isValid" />
-      </div>
-      <div class="subject-radio-group">
-        <div class="subject-radio">
-          <input type="radio" id="subject-change"
-            :checked="subjectChanged === true"
-            @click="toggleSubjectChanged" />
-          <!-- 2回クリックしたら選択解除 -->
-          <label for="subject-change">被写体変更あり</label>
-        </div>
-        <div class="select-subject-group" v-if="subjectChanged === true">
-          <div class="select-subject">
-            <label>被写体名称：</label>
-            <select v-model="selectedSubject">
-              <option v-for="subject in subjectList" :key="subject" :value="subject">
-                {{ subject }}
-              </option>
-            </select>
-          </div>
-          <div class="tag-result">
-            <h4>和名タグは「 {{ decodedTag }} 」です</h4>
-            <!-- ☆タグ内の被写体名だけ変更 -->
-          </div>
-        </div>
-
       </div>
     </div>
     <button>適用</button>
@@ -91,6 +74,21 @@ export default {
 </script>
 
 <style scoped>
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
 .setting-edit-page {
   min-height: 100vh;
   background: #f7f7f7;

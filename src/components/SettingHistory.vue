@@ -1,21 +1,17 @@
 <template>
-  <div class="approval-list-page">
+  <div class="setting-history-page">
     <div class="header">
-      <h2 class="title">承認ステータス</h2>
+      <h2 class="title">被写体編集履歴</h2>
     </div>
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <span>承認ステータス</span>
+      <router-link to="/setting">システム設定</router-link>
+      <span> &gt;</span>
+      <span>被写体編集履歴</span>
     </nav>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'ApprovalList'
-}
-</script>
 
 <style scoped>
 .breadcrumb {
@@ -33,7 +29,7 @@ export default {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
-.approval-list-page {
+.setting-history-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;
@@ -60,5 +56,4 @@ export default {
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: left;
 }
-
 </style>

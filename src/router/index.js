@@ -7,6 +7,7 @@ import RecipeChange from '../components/RecipeChange.vue'
 import SettingDelete from '../components/SettingDelete.vue'
 import SystemSetting from '../components/SystemSetting.vue'
 import SettingEdit from '../components/SettingEdit.vue'
+import SettingHistory from '../components/SettingHistory.vue'
 import TagInfo from '../components/TagInfo.vue'
 import CameraInfo from '../components/CameraInfo.vue'
 import RecipeInfo from '../components/RecipeInfo.vue'
@@ -59,6 +60,7 @@ const routes = [
   { path: '/recipeDB/recipeChange', component: RecipeChange },
   { path: '/tag', component: TagControl },
   { path: '/settingAdd', component: SettingAdd },
+  { path: '/settingHistory', component: SettingHistory },
   { path: '/tag/history', component: TagHistory },
   // { path: '/tag/change', component: TagChange },
   { path: '/tag/delete', component: TagDelete },

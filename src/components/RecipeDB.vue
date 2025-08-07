@@ -2,7 +2,12 @@
   <div class="recipe-db-page">
     <div class="header">
       <h2 class="title">レシピDB操作</h2>
-    </div>    
+    </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <span>レシピDB操作</span>
+    </nav>    
     <div class="button-group">
       <router-link to="/recipeDB/recipeHistory" class="menu-item-link">
         <button class="menu-item">
@@ -27,6 +32,21 @@
 </template>
 
 <style scoped>
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
 .recipe-db-page {
   min-height: 100vh;
   background: #f7f7f7;

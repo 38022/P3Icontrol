@@ -3,6 +3,13 @@
     <div class="header">
       <h2 class="title">出力タグ情報：{{ decodedTag }}</h2>
     </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <router-link to="/setting">システム設定</router-link>
+      <span> &gt;</span>
+      <span>出力タグ情報</span>
+    </nav>
     <div class="display-info">
       <p>和名タグ名：{{ decodedTag }}</p>
       <p>英名タグ名：</p>
@@ -38,6 +45,21 @@ export default {
 </script>
 
 <style scoped>
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
 .tag-info-page {
   min-height: 100vh;
   background: #f7f7f7;

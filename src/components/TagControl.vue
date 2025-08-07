@@ -3,6 +3,11 @@
     <div class="header">
       <h2 class="title">タグ操作</h2>
     </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <span>タグ操作</span>
+    </nav>   
     <div class="button-group">
       <button class="menu-item" @click="$router.push('/tag/history')">
         <img src="@/assets/log_icon.png" alt="タグ更新履歴" />
@@ -17,6 +22,21 @@
 </template>
 
 <style scoped>
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
 .tag-control-page {
   min-height: 100vh;
   background: #f7f7f7;

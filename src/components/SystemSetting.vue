@@ -3,6 +3,11 @@
     <div class="header">
       <h2 class="title">システム設定</h2>
     </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <span>システム設定</span>
+    </nav>
     <div class="select-area">
       <label class="select-label" for="factor-select">工場を選択</label>
       <div class="select-row">
@@ -29,7 +34,7 @@
         </thead>
         <tbody>
           <tr v-for="(row, i) in currentTableData" :key="i">
-            <td>{{ row.enabled }}</td>
+            <td :class="{ disabled: row.enabled === '無効' }">{{ row.enabled }}</td>
             <td>{{ row.no }}</td>
             <td>
               <router-link
@@ -72,7 +77,7 @@
               } }">削除</router-link>
             </td>
             <td>
-              <router-link :to="`/history/${row.no}`">編集履歴</router-link>
+              <router-link to="/settingHistory">編集履歴</router-link>
             </td>
           </tr>
         </tbody>
@@ -96,7 +101,7 @@ export default {
       tableDataMap: {
         L1: [
           {
-            enabled: 'Y',
+            enabled: '有効',
             no: 1,
             tag: 'l1_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
             recipeId: 'recipe_id1',
@@ -106,7 +111,7 @@ export default {
             status: '正常'
           },
           {
-            enabled: 'N',
+            enabled: '無効',
             no: 2,
             tag: 'l1_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
             recipeId: 'recipe_id2',
@@ -116,7 +121,7 @@ export default {
             status: '無効'
           },
           {
-            enabled: 'Y',
+            enabled: '有効',
             no: 3,
             tag: 'l1_b_p3 _005 _cam001_遮断室DS_framesub_OS_pv',
             recipeId: 'recipe_id3',
@@ -128,7 +133,7 @@ export default {
         ],
         L2: [
           {
-            enabled: 'Y',
+            enabled: '有効',
             no: 1,
             tag: 'l2_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
             recipeId: 'recipe_id1',
@@ -138,7 +143,7 @@ export default {
             status: '正常'
           },
           {
-            enabled: 'N',
+            enabled: '無効',
             no: 2,
             tag: 'l2_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
             recipeId: 'recipe_id2',
@@ -148,7 +153,7 @@ export default {
             status: '無効'
           },
           {
-            enabled: 'Y',
+            enabled: '有効',
             no: 3,
             tag: 'l2_b_p3 _005 _cam001_遮断室DS_framesub_OS_pv',
             recipeId: 'recipe_id3',
@@ -183,6 +188,21 @@ export default {
 </script>
 
 <style scoped>
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
 .system-setting-page {
   min-height: 100vh;
   background: #f7f7f7;
@@ -260,5 +280,9 @@ th, td {
   padding: 8px;
   text-align: center;
   background: #fff;
+}
+
+.disabled {
+  color: #aaa;
 }
 </style>
