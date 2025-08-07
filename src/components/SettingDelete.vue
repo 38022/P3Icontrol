@@ -1,19 +1,13 @@
 <template>
-  <div class="setting-delete">
-    <h2>設定削除</h2>
+  <div class="setting-delete-page">
+    <div class="header">
+      <h2 class="title">設定削除</h2>
+    </div>
     <div class="display-info">
       <p>カメラ名：{{ decodedCamera }}</p>
       <p>タグ名：{{ decodedTag }}</p>
       <p>レシピID：{{ decodedRecipeId }}</p>
     </div>
-    <!-- <div class="select-setting">
-      <p>削除する設定を選択</p>
-      <select v-model="selectedSetting">
-        <option v-for="settings in settingsList" :key="settings" :value="settings">
-          {{ settings }}
-        </option>
-      </select>
-    </div> -->
     <button @click="onDelete">削除</button>
   </div>
 </template>
@@ -62,27 +56,37 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  position: relative;
-  text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
+.setting-delete-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background: #FFD700;
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
 }
 .display-info {
   text-align: left;
   margin-left: 60px;
-  margin-top: 100px;
+  margin-top: 60px;
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
 }
@@ -98,5 +102,14 @@ h2::after {
 }
 .select-recipe select {
   width: 330px;
+}
+
+button {
+  width: 80px;
+  height: 32px;
+  font-size: 1rem;
+  padding: 4px 0;
+  margin-left: 600px;
+  margin-top: 32px;
 }
 </style>

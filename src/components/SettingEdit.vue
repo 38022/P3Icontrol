@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style scoped>
-.tag-info-page {
+.setting-edit-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;
