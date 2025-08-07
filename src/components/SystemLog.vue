@@ -8,8 +8,57 @@
       <span> &gt;</span>
       <span>システムログ</span>
     </nav>
+    <div class="log-table">
+      <table>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>カメラ名</th>
+            <th>レシピID</th>
+            <th>タグ名</th>
+            <th>エラー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(log, i) in logList" :key="i">
+            <td>{{ log.date }}</td>
+            <td>{{ log.camera }}</td>
+            <td>{{ log.recipeId }}</td>
+            <td>{{ log.tag }}</td>
+            <td class="error-cell">{{ log.error }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'SystemLog',
+  data() {
+    return {
+      logList: [
+        {
+          date: '2025/08/01 12:00',
+          camera: 'CAM1',
+          recipeId: 'recipe_id3',
+          tag: 'l1_b_p3_005_cam001_テンター出ツレ_framesub_OS_pv',
+          error: '-1'
+        },
+        {
+          date: '2025/08/01 13:00',
+          camera: 'CAM4',
+          recipeId: 'recipe_id6',
+          tag: 'l1_b_p3_005_cam004_テンター入り_framesub_OS_pv',
+          error: '-12'
+        }
+        // 必要に応じて追加
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped>
 .breadcrumb {
@@ -54,5 +103,34 @@
   box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: left;
+}
+
+.log-table {
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+.log-table table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.log-table th,
+.log-table td {
+  border: 1px solid #888;
+  padding: 8px 12px;
+  text-align: center;
+  background: #fff; /* セルの背景を白に */
+  font-size: 1rem;
+}
+
+.log-table th {
+  background: #fff;
+  font-weight: bold;
+}
+
+.log-table td.error-cell {
+  color: #d32f2f; /* エラー列の文字を赤に */
 }
 </style>
