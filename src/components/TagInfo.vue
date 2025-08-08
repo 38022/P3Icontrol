@@ -28,6 +28,17 @@
       </p>
       <p>最終出力日時：</p>
       <p>レシピ変更履歴：</p>
+      <div class="recipe-list">
+        <div>
+          [2025-07-28 00:30:00]
+          <router-link
+            :to="{ name: 'RecipeInfo', params: { recipeId: encodeURIComponent(decodedRecipeId), tag: encodeURIComponent(decodedTag) } }"
+          >{{ decodedRecipeId }}</router-link>
+        </div>
+        <div>
+          [2025-08-08 23:45:00] recipe_id3
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -126,5 +137,15 @@ export default {
 
 .display-info a:hover {
   text-decoration: underline;
+}
+
+.recipe-list {
+  margin-left: 60px;
+  margin-top: 0;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: fit-content;
 }
 </style>
