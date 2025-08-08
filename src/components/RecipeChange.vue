@@ -1,15 +1,26 @@
 <template>
-  <div class="recipe-change">
-    <h2>レシピ変更</h2>
+  <div class="recipe-change-page">
+    <div class="header">
+      <h2 class="title">レシピ編集</h2>
+    </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <router-link to="/recipeDB">レシピDB操作</router-link>
+      <span> &gt;</span>
+      <span>レシピ編集</span>
+    </nav>
     <div class="select-camera">
       <p>レシピ変更するカメラを選択</p>
-      <select v-model="selectedCamera">
-        <option v-for="cameras in camerasList" :key="cameras" :value="cameras">
-          {{ cameras }}
-        </option>
-      </select>
+      <div class="select-row">
+        <select v-model="selectedCamera">
+          <option v-for="cameras in camerasList" :key="cameras" :value="cameras">
+            {{ cameras }}
+          </option>
+        </select>
+        <button @click="showEdit = true" :disabled="!selectedCamera">OK</button>
+      </div>
     </div>
-    <button @click="showEdit = true" :disabled="!selectedCamera">OK</button>
     <div v-if="showEdit" class="edit-recipe">
       <div class="select-algo">
         <label>画像処理手法：</label>
@@ -74,39 +85,82 @@ export default {
 </script>
 
 <style scoped>
-body {
-  margin: 0;
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-h2 {
-  position: relative;
-  text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
 }
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background: #FFD700;
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
-.select-camera {
+.recipe-change-page {
+  min-height: 100vh;
+  background: #f7f7f7;
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
-  gap: 10px;
+  width: 100%;
 }
-.select-camera p {
-  text-align: left;
+
+.header {
   margin: 0;
+  padding: 0;
+  width: 100%;
 }
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
+}
+
+.select-camera {
+  margin-top: 32px;
+  margin-left: 30px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.select-camera p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  margin-left: 0;
+}
+
+.select-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;
+}
+
 .select-camera select {
-  width: 200px;
+  padding: 6px 16px;
+  font-size: 1rem;
 }
+
+.select-camera button {
+  padding: 4px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .edit-recipe {
   display: flex;
   flex-direction: column;
