@@ -13,7 +13,19 @@
     <div class="display-info">
       <p>和名タグ名：{{ decodedTag }}</p>
       <p>英名タグ名：</p>
-      <p>紐づいたカメラ名：{{ decodedCamera }}</p>
+      <p>
+        紐づいたカメラ名：
+        <router-link
+          v-if="decodedCamera"
+          :to="{ name: 'CameraInfo', params: { 
+            camera: encodeURIComponent(decodedCamera),
+            tag: encodeURIComponent(decodedTag), 
+            recipeId: encodeURIComponent(decodedRecipeId) } }"
+        >
+          {{ decodedCamera }}
+        </router-link>
+        <span v-else> </span>
+      </p>
       <p>最終出力日時：</p>
       <p>レシピ変更履歴：</p>
     </div>
@@ -30,6 +42,10 @@ export default {
     camera: {
       type: String,
       required: false
+    },
+    recipeId: {
+      type: String,
+      required: false
     }
   },
   computed: {
@@ -39,6 +55,9 @@ export default {
     },
     decodedCamera() {
       return this.camera ? decodeURIComponent(this.camera) : '';
+    },
+    decodedRecipeId() {
+      return this.recipeId ? decodeURIComponent(this.recipeId) : '';
     }
   }
 }
@@ -94,5 +113,18 @@ export default {
   margin-top: 60px;
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
+}
+
+.display-info a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.display-info a:visited {
+  color: #1976d2; /* visitedでも青色に固定 */
+}
+
+.display-info a:hover {
+  text-decoration: underline;
 }
 </style>

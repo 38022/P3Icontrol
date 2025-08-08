@@ -54,7 +54,7 @@
               <template v-if="Array.isArray(row.tag)">
                 <div v-for="(t, idx) in row.tag" :key="idx">
                   <router-link
-                    :to="{ name: 'TagInfo', params: { no: row.no, tag: encodeURIComponent(t), camera: encodeURIComponent(row.camera) } }"
+                    :to="{ name: 'TagInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag), recipeId: encodeURIComponent(row.recipeId) } }"
                   >
                     {{ t }}
                   </router-link>
@@ -62,7 +62,7 @@
               </template>
               <template v-else>
                 <router-link
-                  :to="{ name: 'TagInfo', params: { no: row.no, tag: encodeURIComponent(row.tag), camera: encodeURIComponent(row.camera) } }"
+                  :to="{ name: 'TagInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag), recipeId: encodeURIComponent(row.recipeId) } }"
                 >
                   {{ row.tag }}
                 </router-link>
