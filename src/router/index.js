@@ -42,10 +42,10 @@ const routes = [
     props: route => ({ tag: route.params.tag, camera: route.params.camera })
   },
   {
-    path: '/camerainfo/:no/:camera/:tag',
+    path: '/camerainfo/:no/:camera/:tag/:recipeId',
     name: 'CameraInfo',
     component: CameraInfo,
-    props: route => ({ camera: route.params.camera, tag: route.params.tag })
+    props: route => ({ camera: route.params.camera, tag: route.params.tag, recipeId: route.params.recipeId })
   },
   {
     path: '/recipeinfo/:no/:recipeId/:tag',

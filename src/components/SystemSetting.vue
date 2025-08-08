@@ -38,7 +38,7 @@
             <td>{{ row.no }}</td>
             <td>
               <router-link
-                :to="{ name: 'CameraInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag) } }"
+                :to="{ name: 'CameraInfo', params: { no: row.no, camera: encodeURIComponent(row.camera), tag: encodeURIComponent(row.tag), recipeId: encodeURIComponent(row.recipeId) } }"
               >
                 {{ row.camera }}
               </router-link>

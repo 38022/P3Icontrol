@@ -14,8 +14,26 @@
       <p>カメラ名：{{ decodedCamera }}</p>
       <p>カメラID(Avigilon)：</p>
       <p>カメラID(P3-I内部)：</p>
-      <p>紐づいたタグ：{{ decodedTag }}</p>
-      <p>紐づいたレシピ：</p>
+      <p>
+        紐づいたタグ：
+        <router-link
+          v-if="decodedTag"
+          :to="{ name: 'TagInfo', params: { tag: encodeURIComponent(decodedTag), camera: encodeURIComponent(decodedCamera) } }"
+        >
+          {{ decodedTag }}
+        </router-link>
+        <span v-else> </span>
+      </p>
+      <p>
+        紐づいたレシピID：
+        <router-link
+          v-if="decodedRecipeId"
+          :to="{ name: 'RecipeInfo', params: { recipeId: encodeURIComponent(decodedRecipeId), tag: encodeURIComponent(decodedTag) } }"
+        >
+          {{ decodedRecipeId }}
+        </router-link>
+        <span v-else> </span>
+      </p>
       <p>最初のP3-I接続日時：</p>
     </div>
   </div>
@@ -31,6 +49,10 @@ export default {
     camera: {
       type: String,
       required: false
+    },
+    recipeId: {
+      type: String,
+      required: false
     }
   },
   computed: {
@@ -40,6 +62,9 @@ export default {
     },
     decodedCamera() {
       return this.camera ? decodeURIComponent(this.camera) : '';
+    },
+    decodedRecipeId() {
+      return this.recipeId ? decodeURIComponent(this.recipeId) : '';
     }
   }
 }
@@ -95,5 +120,18 @@ export default {
   margin-top: 60px;
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
+}
+
+.display-info a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.display-info a:visited {
+  color: #1976d2; /* visitedでも青色に固定 */
+}
+
+.display-info a:hover {
+  text-decoration: underline;
 }
 </style>
