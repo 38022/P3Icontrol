@@ -15,27 +15,45 @@
       <div class="display-parameter">
         <p>パラメータ</p>
         <div class="parameter-group">
-          <div class="row">
-            <label>画像処理手法：</label>
-          </div>
-          <div class="row">
-            <label>Rect.X：</label>
-            <label>Rect.W：</label>
-            <label>Angle：</label>
-          </div>
-          <div class="row">
-            <label>Rect.Y：</label>
-            <label>Rect.H：</label>
-            <label>Thresh：</label>
-          </div>
-          <div class="row">
-            <label style="visibility: hidden;">dummy</label>
-            <label style="visibility: hidden;">dummy</label>
-            <label>ContourTh：</label>
-          </div>       
+          <table>
+            <colgroup>
+              <col style="width: 200px;">
+              <col style="width: 200px;">
+              <col style="width: 200px;">
+            </colgroup>
+            <tr>
+              <td>画像処理手法：OneFrame</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rect.X：100</td>
+              <td>Rect.W：100</td>
+              <td class="left-align">Angle：0</td>
+            </tr>
+            <tr>
+              <td>Rect.Y：100</td>
+              <td>Rect.H：50</td>
+              <td class="left-align">Thresh：20</td>
+            </tr>
+            <tr>
+              <td style="visibility: hidden;">dummy</td>
+              <td style="visibility: hidden;">dummy</td>
+              <td class="left-align">ContourTh：100</td>
+            </tr>
+          </table>
         </div>
       </div>
-      <p>紐づいたタグ：{{ decodedTag }}</p>
+      <p>
+        紐づいたタグ：
+        <router-link
+          v-if="decodedTag"
+          :to="{ name: 'TagInfo', params: { tag: encodeURIComponent(decodedTag), camera: encodeURIComponent(decodedCamera) } }"
+        >
+          {{ decodedTag }}
+        </router-link>
+        <span v-else> </span>
+      </p>
     </div>
   </div>
 </template>
@@ -114,21 +132,32 @@ export default {
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
 }
-.parameter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+
+.display-info a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.display-info a:visited {
+  color: #1976d2; /* visitedでも青色に固定 */
+}
+
+.display-info a:hover {
+  text-decoration: underline;
+}
+
+.parameter-group table {
+  border-collapse: collapse;
   margin-top: 8px;
-  margin-left: 80px;
+  margin-bottom: 16px;
+  margin-left: 30px;
+  table-layout: fixed; /* 追加 */
 }
-.parameter-group .row {
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  align-items: flex-start;
-}
-.parameter-group label {
-  min-width: 90px;
+.parameter-group td {
+  padding: 4px 0 4px 0;
   text-align: left;
+  font-size: 1rem;
+  vertical-align: top;
+  word-break: break-all;
 }
 </style>
