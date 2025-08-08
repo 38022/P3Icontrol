@@ -284,6 +284,16 @@ button {
   margin-right: 10px;
 }
 
+.system-log a,
+.system-log a:visited {
+  color: #1976d2;
+  text-decoration: underline;
+}
+.system-log a:hover {
+  text-decoration: underline;
+  color: #1256a0;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
