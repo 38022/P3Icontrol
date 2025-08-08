@@ -12,10 +12,31 @@
     </nav>
     <div class="display-info">
       <div class="display-tag">
-        <p>和名タグ名：{{ decodedTag }}</p>
+        <p>
+        和名タグ名：
+        <router-link
+          v-if="decodedTag"
+          :to="{ name: 'TagInfo', params: { tag: encodeURIComponent(decodedTag), camera: encodeURIComponent(decodedCamera), recipeId: encodeURIComponent(decodedRecipeId) } }"
+        >
+          {{ decodedTag }}
+        </router-link>
+        <span v-else> </span>
+      </p>
       </div>
       <div class="display-camera">
-        <p>カメラ名：{{ decodedCamera }}</p>
+        <p>
+        カメラ名：
+          <router-link
+            v-if="decodedCamera"
+            :to="{ name: 'CameraInfo', params: { 
+              camera: encodeURIComponent(decodedCamera),
+              tag: encodeURIComponent(decodedTag), 
+              recipeId: encodeURIComponent(decodedRecipeId) } }"
+          >
+            {{ decodedCamera }}
+          </router-link>
+          <span v-else> </span>
+        </p>
       </div>
       <div class="display-recipe">
         <label>レシピID：</label>
@@ -60,6 +81,10 @@ export default {
     camera: {
       type: String,
       required: false
+    },
+    recipeId: {
+      type: String,
+      required: false
     }
   },
   computed: {
@@ -68,6 +93,9 @@ export default {
     },
     decodedCamera() {
       return this.camera ? decodeURIComponent(this.camera) : '';
+    },
+    decodedRecipeId() {
+      return this.recipeId ? decodeURIComponent(this.recipeId) : '';
     }
   }
 }
@@ -122,6 +150,15 @@ export default {
   margin-top: 60px;
   font-size: 1.2rem; /* 文字サイズを大きく */
   line-height: 2;    /* 行間 */
+}
+.display-info a,
+.display-info a:visited {
+  color: #1976d2;
+  text-decoration: underline;
+}
+.display-info a:hover {
+  text-decoration: underline;
+  color: #1256a0;
 }
 .display-recipe {
   display: flex;

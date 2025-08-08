@@ -30,25 +30,25 @@ const routes = [
    },
   { path: '/setting', component: SystemSetting },
   {
-    path: '/settingEdit/:no/:tag/:camera',
+    path: '/settingEdit/:no/:tag/:camera/:recipeId',
     name: 'SettingEdit',
     component: SettingEdit,
-    props: route => ({ no: route.params.no, tag: route.params.tag, camera: route.params.camera })
+    props: route => ({ no: route.params.no, tag: route.params.tag, camera: route.params.camera, recipeId: route.params.recipeId })
   },
   {
-    path: '/taginfo/:no/:tag/:camera/:recipeId',
+    path: '/taginfo/:tag/:camera/:recipeId',
     name: 'TagInfo',
     component: TagInfo,
     props: route => ({ tag: route.params.tag, camera: route.params.camera, recipeId: route.params.recipeId })
   },
   {
-    path: '/camerainfo/:no/:camera/:tag/:recipeId',
+    path: '/camerainfo/:camera/:tag/:recipeId',
     name: 'CameraInfo',
     component: CameraInfo,
     props: route => ({ camera: route.params.camera, tag: route.params.tag, recipeId: route.params.recipeId })
   },
   {
-    path: '/recipeinfo/:no/:recipeId/:tag',
+    path: '/recipeinfo/:recipeId/:tag',
     name: 'RecipeInfo',
     component: RecipeInfo,
     props: route => ({ recipeId: route.params.recipeId, tag: route.params.tag })

@@ -76,7 +76,8 @@
               :to="{ name: 'SettingEdit',
               params: { no: row.no,
               camera: encodeURIComponent(row.camera),
-              tag: encodeURIComponent(row.tag)
+              tag: encodeURIComponent(row.tag),
+              recipeId: encodeURIComponent(row.recipeId)
               } }">編集</router-link>
             </td>
             <td>
