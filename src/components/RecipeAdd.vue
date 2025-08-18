@@ -1,16 +1,17 @@
 <template>
-  <div class="recipe-add">
-    <h2>レシピ追加</h2>
-    <div class="select-camera">
-      <p>レシピ追加するカメラを選択</p>
-      <select v-model="selectedCamera">
-        <option v-for="cameras in camerasList" :key="cameras" :value="cameras">
-          {{ cameras }}
-        </option>
-      </select>
+  <div class="recipe-add-page">
+    <div class="header">
+      <h2 class="title">レシピDB操作</h2>
     </div>
-    <button @click="showEdit = true" :disabled="!selectedCamera">OK</button>
-    <div v-if="showEdit" class="edit-recipe">
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <span>レシピDB操作</span>
+    </nav>
+    <div class="display-camera">
+      <h3>カメラ名：CAM2</h3>
+    </div>
+    <div class="edit-recipe">
       <div class="select-algo">
         <label>画像処理手法：</label>
         <select v-model="selectedAlgo">
@@ -57,9 +58,6 @@ export default {
   name: 'RecipeAdd',
   data() {
     return {
-      camerasList: ['テンター出ツレ', 'テンター入'],
-      selectedCamera: '',
-      showEdit: false,
       algosList: ['OneFrame', 'FrameSub', 'DropMC', 'MeasureLength', 'ClipLength'],
       rectX: 0,
       rectY: 0,
@@ -74,44 +72,60 @@ export default {
 </script>
 
 <style scoped>
-body {
-  margin: 0;
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-h2 {
-  position: relative;
-  text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
 }
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background: #FFD700;
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
-.select-camera {
+.recipe-db-page {
+  min-height: 100vh;
+  background: #f7f7f7;
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
-  gap: 10px;
+  width: 100%;
 }
-.select-camera p {
-  text-align: left;
+
+.header {
   margin: 0;
+  padding: 0;
+  width: 100%;
 }
-.select-camera select {
-  width: 200px;
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
 }
+
+.display-camera {
+  display: flex;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+
 .edit-recipe {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 50px;
+  margin-left: 100px;
   margin-top: 60px;
   gap: 10px;
 }
