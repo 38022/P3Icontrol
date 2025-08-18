@@ -10,18 +10,12 @@
       <span> &gt;</span>
       <span>レシピ編集</span>
     </nav>
-    <div class="select-camera">
-      <p>レシピ変更するカメラを選択</p>
-      <div class="select-row">
-        <select v-model="selectedCamera">
-          <option v-for="cameras in camerasList" :key="cameras" :value="cameras">
-            {{ cameras }}
-          </option>
-        </select>
-        <button @click="showEdit = true" :disabled="!selectedCamera">OK</button>
-      </div>
+    <div class="display-info">
+      <!-- ★DB画面からとってくるように -->
+      <h3>カメラ名：CAM1</h3>
+      <h3>レシピID：recipe_id1</h3>
     </div>
-    <div v-if="showEdit" class="edit-recipe">
+    <div class="edit-recipe">
       <div class="select-algo">
         <label>画像処理手法：</label>
         <select v-model="selectedAlgo">
@@ -68,9 +62,6 @@ export default {
   name: 'RecipeChange',
   data() {
     return {
-      camerasList: ['テンター出ツレ', 'テンター入'],
-      selectedCamera: '',
-      showEdit: false,
       algosList: ['OneFrame', 'FrameSub', 'DropMC', 'MeasureLength', 'ClipLength'],
       rectX: 0,
       rectY: 0,
@@ -128,37 +119,10 @@ export default {
   text-align: left;
 }
 
-.select-camera {
-  margin-top: 32px;
-  margin-left: 30px;
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.select-camera p {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  margin-left: 0;
-}
-
-.select-row {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 30px;
-}
-
-.select-camera select {
-  padding: 6px 16px;
-  font-size: 1rem;
-}
-
-.select-camera button {
-  padding: 4px 10px;
-  font-size: 1rem;
-  cursor: pointer;
+.display-info {
+  margin-left: 50px;
+  margin-top: 50px;
+  text-align: left;
 }
 
 .edit-recipe {
@@ -166,7 +130,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 50px;
-  margin-top: 60px;
+  margin-top: 30px;
   gap: 10px;
 }
 .rectX input,

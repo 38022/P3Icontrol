@@ -6,7 +6,9 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <span>レシピDB操作</span>
+      <router-link to="/recipeDB">レシピDB操作</router-link>
+      <span> &gt;</span>
+      <span>レシピ追加</span>
     </nav>
     <div class="display-camera">
       <h3>カメラ名：CAM2</h3>
@@ -117,16 +119,16 @@ export default {
 
 .display-camera {
   display: flex;
-  margin-left: 100px;
-  margin-top: 40px;
+  margin-left: 60px;
+  margin-top: 50px;
 }
 
 .edit-recipe {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 100px;
-  margin-top: 60px;
+  margin-left: 60px;
+  margin-top: 30px;
   gap: 10px;
 }
 .rectX input,
