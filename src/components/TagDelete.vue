@@ -6,7 +6,9 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <span>タグ操作</span>
+      <router-link to="/tag">タグ操作</router-link>
+      <span> &gt;</span>
+      <span>タグ削除</span>
     </nav>
     <div class="select-tag">
       <p>削除するタグを選択</p>
