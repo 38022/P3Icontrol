@@ -10,13 +10,9 @@
       <span> &gt;</span>
       <span>タグ削除</span>
     </nav>
-    <div class="select-tag">
-      <p>削除するタグを選択</p>
-      <select v-model="selectedTag">
-        <option v-for="tags in tagsList" :key="tags" :value="tags">
-          {{ tags }}
-        </option>
-      </select>
+    <div class="display-tag">
+      ★タグ操作画面からとってくる
+      <h3>タグ名：l1_***</h3>
     </div>
     <button @click="onDelete">削除</button>
   </div>
@@ -25,12 +21,6 @@
 <script>
 export default {
   name: 'TagDelete',
-  data() {
-    return {
-      tagsList: ['L4_b_p3_001_004_テンター出ツレ_Th250_DS_PV'],
-      selectedTag: ''
-    }
-  },
   methods: {
     onDelete() {
       alert('本当に削除しますか？');
@@ -82,19 +72,10 @@ export default {
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: left;
 }
-.select-tag {
-  display: flex;
-  flex-direction: column;
+.display-tag {
   margin-left: 50px;
   margin-top: 50px;
-  gap: 10px;
-}
-.select-tag p {
   text-align: left;
-  margin: 0;
-}
-.select-tag select {
-  width: 330px;
 }
 
 button {
