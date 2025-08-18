@@ -87,7 +87,7 @@ export default {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
-.recipe-db-page {
+.recipe-add-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;

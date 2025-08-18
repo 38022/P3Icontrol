@@ -1,6 +1,13 @@
 <template>
-  <div class="tag-delete">
-    <h2>タグ削除</h2>
+  <div class="tag-delete-page">
+    <div class="header">
+      <h2 class="title">タグ削除</h2>
+    </div>
+    <nav class="breadcrumb">
+      <router-link to="/">ホーム</router-link>
+      <span> &gt;</span>
+      <span>タグ操作</span>
+    </nav>
     <div class="select-tag">
       <p>削除するタグを選択</p>
       <select v-model="selectedTag">
@@ -31,27 +38,53 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  position: relative;
-  text-align: left;
-  margin-left: 30px;
-  margin-top: -30px;
-  padding-bottom: 4px;
+.breadcrumb {
+  margin: 5px 0 0 12px;
+  font-size: 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-h2::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background: #FFD700;
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.tag-delete-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  background: #fff86a;
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 0 18px 24px;
+  border-radius: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
 }
 .select-tag {
   display: flex;
   flex-direction: column;
   margin-left: 50px;
+  margin-top: 50px;
   gap: 10px;
 }
 .select-tag p {
@@ -60,5 +93,13 @@ h2::after {
 }
 .select-tag select {
   width: 330px;
+}
+
+button {
+  font-size: 1rem;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  margin-left: 450px;
 }
 </style>
