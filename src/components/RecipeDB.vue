@@ -65,32 +65,12 @@
         </tbody>
       </table>
     </div>
-    <!-- <div class="button-group">
-      <router-link to="/recipeDB/recipeHistory" class="menu-item-link">
-        <button class="menu-item">
-          <img src="@/assets/log_icon.png" alt="レシピ更新履歴" />
-          <span>レシピ更新履歴</span>
-        </button>
-      </router-link>
-      <router-link to="/recipeDB/recipeAdd" class="menu-item-link">
-        <button class="menu-item">
-          <img src="@/assets/add_icon.png" alt="レシピ追加" />
-          <span>レシピ追加</span>
-        </button>
-      </router-link>
-      <router-link to="/recipeDB/recipeChange" class="menu-item-link">
-        <button class="menu-item">
-          <img src="@/assets/recipe_icon.png" alt="レシピ変更" />
-          <span>レシピ変更</span>
-        </button>
-      </router-link>
-    </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SystemSetting',
+  name: 'RecipeDB',
   data() {
     return {
       selectedFactory: 'L1',
