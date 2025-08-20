@@ -10,8 +10,15 @@
       <span> &gt;</span>
       <span>レシピ追加</span>
     </nav>
-    <div class="display-camera">
-      <h3>カメラ名：CAM2</h3>
+    <div class="select-camera">
+      <p>追加するカメラを選択</p>
+      <div class="select-camera-row">
+        <select v-model="selectedCamera">
+          <option v-for="camera in cameraList" :key="camera" :value="camera">
+            {{ camera }}
+          </option>
+        </select>
+      </div>
     </div>
     <div class="edit-recipe">
       <div class="select-algo">
@@ -60,6 +67,8 @@ export default {
   name: 'RecipeAdd',
   data() {
     return {
+      selectedCamera: '',
+      cameraList:['テンター出ツレ', 'テンター入り'],
       algosList: ['OneFrame', 'FrameSub', 'DropMC', 'MeasureLength', 'ClipLength'],
       rectX: 0,
       rectY: 0,
@@ -117,10 +126,25 @@ export default {
   text-align: left;
 }
 
-.display-camera {
-  display: flex;
+.select-camera {
+  text-align: left;
   margin-left: 60px;
-  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.select-camera p {
+  margin-bottom: 4px;
+}
+.select-camera-row {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  margin-top: 0;
+}
+.select-camera select {
+  width: 200px;
+  height: 30px;
+  font-size: 1.2rem;
 }
 
 .edit-recipe {
@@ -128,7 +152,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 60px;
-  margin-top: 30px;
+  margin-top: 10px;
   gap: 10px;
 }
 .rectX input,

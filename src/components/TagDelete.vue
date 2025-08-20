@@ -11,7 +11,7 @@
       <span>タグ削除</span>
     </nav>
     <div class="display-tag">
-      ★タグ操作画面からとってくる
+      <!-- ★タグ操作画面からとってくる -->
       <h3>タグ名：l1_***</h3>
     </div>
     <button @click="onDelete">削除</button>

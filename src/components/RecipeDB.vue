@@ -41,15 +41,6 @@
               to="/recipeDB/recipeChange">編集</router-link>
             </td>
             <td>
-              <!-- recipeIdがnullなら有効、cameraがnullなら無効 -->
-              <router-link
-                v-if="row.recipeId === null && row.camera !== null"
-                to="/recipeDB/recipeAdd"
-              >追加</router-link>
-              <span v-else-if="row.camera === null" style="color: #ccc; pointer-events: none; cursor: default;">追加</span>
-              <span v-else style="color: #ccc; pointer-events: none; cursor: default;">追加</span>
-            </td>
-            <td>
               <!-- cameraがnullなら有効、recipeIdがnullなら無効 -->
               <router-link
                 v-if="row.camera === null && row.recipeId !== null"
@@ -64,6 +55,9 @@
           </tr>
         </tbody>
       </table>
+      <router-link to="/recipeDB/recipeAdd">
+        <button>追加</button>
+      </router-link>
     </div>
   </div>
 </template>
