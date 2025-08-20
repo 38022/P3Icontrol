@@ -12,7 +12,7 @@
     </nav>
     <div class="display-tag">
       <!-- ★タグ操作画面からとってくる -->
-      <h3>タグ名：l1_***</h3>
+      <h3>タグ名：l1_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv</h3>
     </div>
     <button @click="onDelete">削除</button>
   </div>

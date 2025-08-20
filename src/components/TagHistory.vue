@@ -13,7 +13,7 @@
     <div class="tag-history-content">
       <div class="display-tag">
         <!-- ★タグ操作ページからとってくる -->
-        <h3>タグ名：l1_***</h3>
+        <h3>タグ名：l1_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv</h3>
       </div>
       <div class="tag-history-table">
         <table>
@@ -53,7 +53,7 @@ export default {
       tagHistoryList: [
         {
           editDate: '2025/07/22 12:00',
-          camera: 'CAM1',
+          camera: 'CAM4',
           recipeId: 'recipe_id3',
           editor: '***'
         },

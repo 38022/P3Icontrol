@@ -66,21 +66,21 @@ export default {
       tagList: [
         {
           no: '1',
-          tag: 'l1_***',
+          tag: 'l1_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
           camera: 'CAM1',
           editDate: '2025/08/01 12:00',
           createDate: '2025/07/22 12:00'
         },
         {
           no: '2',
-          tag: 'l1_***',
+          tag: 'l1_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
           camera: 'CAM2',
           editDate: '2025/08/01 12:00',
           createDate: '2025/07/22 12:00'
         },
         {
           no: '3',
-          tag: 'l1_***',
+          tag: 'l1_b_p3 _006 _cam001_テンター入り_framesub_OS_pv',
           camera: null,
           editDate: '2025/08/01 12:00',
           createDate: '2025/07/22 12:00'
