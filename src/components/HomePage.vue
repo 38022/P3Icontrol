@@ -174,31 +174,29 @@ export default {
   padding: 0;
 }
 
-.home-page {
-  min-height: 100vh;
-  background: #f7f7f7;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
 .header {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-width: 100vw;
+  background: #fff86a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  z-index: 100;
+}
+.home-page {
+  padding-top: 64px; /* .headerの高さに合わせて調整 */
 }
 
 .title {
-  width: 100%;
-  background: #fff86a;
-  color: #222;
+  margin: 0;
   font-size: 2rem;
   font-weight: bold;
-  margin: 0;
+  color: #222;
+  background: transparent;
+  box-shadow: none;
   padding: 18px 0 18px 24px;
   border-radius: 0;
-  box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: left;
 }
 
