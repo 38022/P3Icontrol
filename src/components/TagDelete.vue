@@ -1,7 +1,10 @@
 <template>
   <div class="tag-delete-page">
     <div class="header">
-      <h2 class="title">タグ削除</h2>
+      <div class="title-row">
+        <h2 class="title">タグ削除</h2>
+        <span class="page-desc">カメラと紐づいておらず使われていないタグを削除する</span>
+      </div>
     </div>
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
@@ -59,19 +62,36 @@ export default {
   width: 100%;
 }
 
-.title {
+.title-row {
+  display: flex;
+  align-items: center;
   width: 100%;
   background: #fff86a;
-  color: #222;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 18px 0 18px 24px;
   border-radius: 0;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  text-align: left;
 }
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.page-desc {
+  margin-left: 32px;
+  font-size: 1.1rem;
+  color: #555;
+  white-space: nowrap;
+}
+
 .display-tag {
   margin-left: 50px;
   margin-top: 50px;
