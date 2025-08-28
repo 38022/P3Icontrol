@@ -1,14 +1,14 @@
 <template>
   <div class="setting-history-page">
     <div class="header">
-      <h2 class="title">被写体編集履歴</h2>
+      <h2 class="title">処理構成の編集履歴</h2>
     </div>
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
       <router-link to="/setting">システム設定</router-link>
       <span> &gt;</span>
-      <span>被写体編集履歴</span>
+      <span>処理構成の処理構成の編集履歴</span>
     </nav>
     <div class="history-table">
       <table>

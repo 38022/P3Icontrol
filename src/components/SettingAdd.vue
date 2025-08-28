@@ -1,14 +1,14 @@
 <template>
   <div class="setting-add-page">
     <div class="header">
-      <h2 class="title">被写体追加</h2>
+      <h2 class="title">処理構成の追加</h2>
     </div>
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
       <router-link to="/setting">システム設定</router-link>
       <span> &gt;</span>
-      <span>被写体追加</span>
+      <span>処理構成の追加</span>
     </nav>
     <div class="select-camera">
       <p>追加するカメラを選択</p>

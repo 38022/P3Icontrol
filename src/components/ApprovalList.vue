@@ -1,12 +1,12 @@
 <template>
   <div class="approval-list-page">
     <div class="header">
-      <h2 class="title">承認ステータス</h2>
+      <h2 class="title">対応ステータス</h2>
     </div>
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <span>承認ステータス</span>
+      <span>対応ステータス</span>
     </nav>
     <div class="approval-table">
       <table>
@@ -20,7 +20,6 @@
             <th>申請日時</th>
             <th>申請者</th>
             <th>ステータス</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -32,14 +31,13 @@
             <td>{{ row.tag }}</td>
             <td>{{ row.date }}</td>
             <td>{{ row.name }}</td>
-            <td :class="{ 'rejected-status': row.status === '却下' }">
-              {{ row.status }}</td>
             <td>
-              <button
-                v-if="row.status === '未'"
-                @click="approve(i)"
-                class="approve-btn"
-              >承認</button>
+              <input
+                type="checkbox"
+                :checked="row.status === '済'"
+                @change="row.status = $event.target.checked ? '済' : '未'"
+              />
+              <span>{{ row.status === '済' ? '済' : '未' }}</span>
             </td>
           </tr>
         </tbody>
@@ -96,11 +94,6 @@ export default {
         }
         // 必要に応じて追加
       ]
-    }
-  },
-  methods: {
-    approve(index) {
-      this.approvalList[index].status = '承認';
     }
   }
 }
@@ -180,17 +173,4 @@ export default {
   background: #ffeaea !important;
 }
 
-.approve-btn {
-  padding: 4px 16px;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.approve-btn:hover {
-  background: #1256a0;
-}
 </style>

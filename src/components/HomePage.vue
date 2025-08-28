@@ -32,8 +32,8 @@
         </router-link>
         <router-link to="/approval" class="menu-item-link">
           <button class="menu-item">
-            <img src="@/assets/list_icon.png" alt="承認待ち" />
-            <span>承認待ち</span>
+            <img src="@/assets/list_icon.png" alt="対応待ち" />
+            <span>対応待ち</span>
           </button>
         </router-link>
       </div>

@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
 // import RecipeControl from '../components/RecipeControl.vue'
-import RecipeAdd from '../components/RecipeAdd.vue'
-import RecipeHistory from '../components/RecipeHistory.vue'
-import RecipeChange from '../components/RecipeChange.vue'
+// import RecipeAdd from '../components/RecipeAdd.vue'
+// import RecipeHistory from '../components/RecipeHistory.vue'
+// import RecipeChange from '../components/RecipeChange.vue'
 import RecipeDelete from '../components/RecipeDelete.vue'
 import SettingDelete from '../components/SettingDelete.vue'
 import SystemSetting from '../components/SystemSetting.vue'
@@ -56,9 +56,9 @@ const routes = [
   },
   { path: '/log', component: SystemLog },
   { path: '/recipeDB', component: RecipeDB },
-  { path: '/recipeDB/recipeHistory', component: RecipeHistory },
-  { path: '/recipeDB/recipeAdd', component: RecipeAdd },
-  { path: '/recipeDB/recipeChange', component: RecipeChange },
+  // { path: '/recipeDB/recipeHistory', component: RecipeHistory },
+  // { path: '/recipeDB/recipeAdd', component: RecipeAdd },
+  // { path: '/recipeDB/recipeChange', component: RecipeChange },
   { path: '/recipeDB/recipeDelete', component: RecipeDelete },
   { path: '/tag', component: TagControl },
   { path: '/settingAdd', component: SettingAdd },

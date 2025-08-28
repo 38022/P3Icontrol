@@ -36,10 +36,10 @@
             <td>{{ row.camera }}</td>
             <td>{{ row.editDate }}</td>
             <td>{{ row.createDate }}</td>
-            <td>
+            <!-- <td>
               <router-link
               to="/recipeDB/recipeChange">編集</router-link>
-            </td>
+            </td> -->
             <td>
               <!-- cameraがnullなら有効、recipeIdがnullなら無効 -->
               <router-link
@@ -49,9 +49,9 @@
               <span v-else-if="row.recipeId === null" style="color: #ccc; pointer-events: none; cursor: default;">削除</span>
               <span v-else style="color: #ccc; pointer-events: none; cursor: default;">削除</span>
             </td>
-            <td>
+            <!-- <td>
               <router-link to="/recipeDB/recipeHistory">編集履歴</router-link>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
