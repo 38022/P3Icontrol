@@ -3,7 +3,7 @@
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成の追加</h2>
-        <span class="page-desc">カメラ/タグ/レシピの設定を追加する</span>
+        <span class="page-desc">処理構成(新規カメラ追加や新レシピなど)を追加する</span>
       </div>
     </div>
     <nav class="breadcrumb">

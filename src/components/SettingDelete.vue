@@ -3,7 +3,7 @@
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成の削除</h2>
-        <span class="page-desc">処理構成を削除(設定の解除)する</span>
+        <span class="page-desc">処理構成を削除する</span>
       </div>
     </div>
     <nav class="breadcrumb">

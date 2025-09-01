@@ -3,7 +3,7 @@
     <div class="header">
       <div class="title-row">
         <h2 class="title">タグ削除</h2>
-        <span class="page-desc">カメラと紐づいておらず使われていないタグを削除する</span>
+        <span class="page-desc">すでに出力停止しているタグを削除する</span>
       </div>
     </div>
     <nav class="breadcrumb">
