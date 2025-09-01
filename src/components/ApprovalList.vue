@@ -3,7 +3,7 @@
     <div class="header">
       <div class="title-row">
         <h2 class="title">対応ステータス</h2>
-        <span class="page-desc">ユーザーからの申請に対する対応状況</span>
+        <span class="page-desc">管理DBの申請の対応状況</span>
       </div>
     </div>
     <nav class="breadcrumb">

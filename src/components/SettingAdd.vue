@@ -77,8 +77,7 @@
       !selectedFactory ||
       !selectedZone ||
       !selectedSubject ||
-      !selectedSide ||
-      !memo">適用</button>
+      !selectedSide ">適用</button>
   <!-- すべて選択or入力していないと適用ボタンをクリックできない -->
   </div>
 </template>
@@ -248,7 +247,7 @@ button {
 .fixed-ok-button {
   position: fixed;
   right: 400px;
-  bottom: 100px;
+  bottom: 50px;
   z-index: 100;
 }
 </style>
