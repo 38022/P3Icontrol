@@ -36,6 +36,12 @@
             <span>対応ステータス</span>
           </button>
         </router-link>
+        <router-link to="" class="menu-item-link">
+          <button class="menu-item">
+            <img src="@/assets/editor_icon.png" alt="レシピエディタ" />
+            <span>レシピエディタ</span>
+          </button>
+        </router-link>
       </div>
     </div>
     <div class="main-content">
