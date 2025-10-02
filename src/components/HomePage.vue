@@ -1,15 +1,18 @@
 <template>
 <div class="home-page">
   <div class="header">
-    <h1 class="title">P3I管理コンソール</h1>
+    <div class="title-row">
+      <h1 class="title">P3I管理コンソール</h1>
+      <span class="factory-label">【L5】</span>
+    </div>
   </div>
   <div class="content-area">
     <div class="sidebar">
       <div class="menu">
         <router-link to="/setting" class="menu-item-link">
           <button class="menu-item">
-            <img src="@/assets/setting_icon.png" alt="システム設定" />
-            <span>システム設定</span>
+            <img src="@/assets/setting_icon.png" alt="処理構成" />
+            <span>処理構成</span>
           </button>
         </router-link>
         <router-link to="/log" class="menu-item-link">
@@ -36,55 +39,33 @@
             <span>対応ステータス</span>
           </button>
         </router-link>
-        <router-link to="" class="menu-item-link">
-          <button class="menu-item">
+        <a href="http://10.105.35.74:23345/" target="_blank" rel="noopener" class="menu-item-link">
+          <button class="menu-item editor-active">
             <img src="@/assets/editor_icon.png" alt="レシピエディタ" />
             <span>レシピエディタ</span>
           </button>
-        </router-link>
+        </a>
       </div>
     </div>
     <div class="main-content">
       <h2 class="status-title">P3稼働状況</h2>
       <div class="status-table-area">
-        <div class="status-table-column">
-          <div class="status-table-block" v-for="line in lines.slice(0, 3)" :key="line.name">
-            <table class="status-table">
-              <tbody>
-                <tr v-for="(cam, i) in line.cameras" :key="cam.name">
-                  <td v-if="i === 0" class="line-label" :rowspan="line.cameras.length">{{ line.name }}</td>
-                  <td>{{ cam.name }}</td>
-                  <td :class="{ error: cam.status === 'エラー' }">{{ cam.status }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="status-table-block">
+          <table class="status-table">
+            <tbody>
+              <tr v-for="(cam, i) in lines[0].cameras" :key="cam.name">
+                <td v-if="i === 0" class="line-label" :rowspan="lines[0].cameras.length">{{ lines[0].name }}</td>
+                <td>{{ cam.name }}</td>
+                <td :class="{ error: cam.status === 'エラー' }">{{ cam.status }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="status-table-column">
-          <div class="status-table-block" v-for="line in lines.slice(3, 6)" :key="line.name">
-            <table class="status-table">
-              <tbody>
-                <tr v-for="(cam, i) in line.cameras" :key="cam.name">
-                  <td v-if="i === 0" class="line-label" :rowspan="line.cameras.length">{{ line.name }}</td>
-                  <td>{{ cam.name }}</td>
-                  <td :class="{ error: cam.status === 'エラー' }">{{ cam.status }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="status-table-column">
-          <div class="status-table-block" v-for="line in lines.slice(6)" :key="line.name">
-            <table class="status-table">
-              <tbody>
-                <tr v-for="(cam, i) in line.cameras" :key="cam.name">
-                  <td v-if="i === 0" class="line-label" :rowspan="line.cameras.length">{{ line.name }}</td>
-                  <td>{{ cam.name }}</td>
-                  <td :class="{ error: cam.status === 'エラー' }">{{ cam.status }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      </div>
+      <div class="factory-switch">
+        <span>他工場のコンソールを見る場合はこちら</span>
+        <div class="factory-buttons">
+          <button v-for="f in ['L1', 'L2', 'L3', 'L4', 'L6', 'L7']" :key="f" class="factory-btn">⇒{{ f }}</button>
         </div>
       </div>
     </div>
@@ -99,70 +80,13 @@ export default {
     return {
       lines: [
         {
-          name: 'L1',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: 'CAM2', status: '正常' },
-            { name: 'CAM3', status: '正常' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
-          name: 'L2',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: 'CAM2', status: 'エラー' },
-            { name: 'CAM3', status: '無効' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
-          name: 'L3',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
-          name: 'L4',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: 'CAM2', status: '正常' },
-            { name: 'CAM3', status: '正常' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
           name: 'L5',
           cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: 'CAM2', status: 'エラー' },
-            { name: 'CAM3', status: '無効' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
-          name: 'L6',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
-          name: 'L7',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: 'CAM2', status: '正常' },
-            { name: 'CAM3', status: '正常' },
-            { name: '・・・', status: '' }
-          ]
-        },
-        {
-          name: 'L8',
-          cameras: [
-            { name: 'CAM1', status: '正常' },
-            { name: 'CAM2', status: 'エラー' },
-            { name: 'CAM3', status: '無効' },
+            { name: '2SLシューターカメラDS', status: '正常' },
+            { name: '2SL配管カメラDS', status: 'エラー' },
+            { name: '2SL配管カメラOS', status: '無効' },
+            { name: '3SL配管DS', status: '正常' },
+            { name: '3SL配管OS', status: '正常' },
             { name: '・・・', status: '' }
           ]
         }
@@ -181,29 +105,37 @@ export default {
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
-  min-width: 100vw;
   background: #fff86a;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  z-index: 100;
+  padding: 0;
+  margin: 0;
 }
-.home-page {
-  padding-top: 64px; /* .headerの高さに合わせて調整 */
+
+.title-row {
+  display: flex;
+  align-items: center;
+  padding: 18px 0 18px 24px;
 }
 
 .title {
-  margin: 0;
   font-size: 2rem;
   font-weight: bold;
   color: #222;
-  background: transparent;
-  box-shadow: none;
-  padding: 18px 0 18px 24px;
-  border-radius: 0;
-  text-align: left;
+  margin: 0;
+}
+
+.factory-label {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-left: 16px;
+  color: #222;
+}
+
+.home-page {
+  /* padding-top: 64px; .headerの高さに合わせて調整 */
+  background: #f7f7f7;
+  min-height: 100vh;
 }
 
 .content-area {
@@ -217,10 +149,10 @@ export default {
 .sidebar {
   margin-top: 40px;
   margin-left: 60px;
-  height: auto;
+  /* height: auto; */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
 }
 
 .menu {
@@ -250,10 +182,20 @@ export default {
   cursor: pointer;
   transition: box-shadow 0.2s, background 0.2s;
 }
+
+.menu-item.editor-active {
+  background: #e6faff;
+}
+
 .menu-item:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   background: #fffbe0;
 }
+
+.menu-item.editor-active:hover {
+  background: #b2ebf2;
+}
+
 .menu-item img {
   width: 48px;
   height: 48px;
@@ -275,7 +217,8 @@ export default {
 .status-title {
   font-size: 1.6rem;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-top: 60px;
+  margin-bottom: 10px;
   text-align: left;
   width: 100%;
 }
@@ -285,18 +228,16 @@ export default {
   flex-direction: row;
   gap: 48px;
   margin-top: 8px;
+  justify-content: flex-start;
+  width: 100%;
 }
-.status-table-column {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+
 .status-table-block {
   display: flex;
   flex-direction: column;
   max-height: 200px;
   overflow-y: auto;
-  width: 260px;
+  width: 500px;
 }
 .status-table {
   border-collapse: collapse;
@@ -324,5 +265,35 @@ export default {
 .status-table .error {
   background: #f7bcbc;
   color: #222;
+}
+
+.factory-switch {
+  margin-top: 120px;
+  font-size: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.factory-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  justify-content: flex-start;
+}
+
+.factory-btn {
+  background: #fff;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  padding: 2px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.factory-btn:hover {
+  background: #f0f0f0;
 }
 </style>
