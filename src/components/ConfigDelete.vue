@@ -9,7 +9,7 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <router-link to="/config">システム設定</router-link>
+      <router-link to="/configPage">処理構成</router-link>
       <span> &gt;</span>
       <span>処理構成の削除</span>
     </nav>
