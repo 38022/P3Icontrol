@@ -3,7 +3,7 @@
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成</h2>
-        <span class="page-desc">各工場の現在の処理構成の一覧</span>
+        <span class="page-desc">現在の処理構成の一覧</span>
       </div>
     </div>
     <nav class="breadcrumb">
@@ -11,17 +11,7 @@
       <span> &gt;</span>
       <span>処理構成</span>
     </nav>
-    <div class="select-area">
-      <label class="select-label" for="factor-select">工場を選択</label>
-      <div class="select-row">
-        <select id="factory-select" v-model="selectedFactory">
-          <option v-for="factory in factories" :key="factory" :value="factory">{{ factory }}</option>
-        </select>
-        <button @click="onFactoryOk">OK</button>
-        <!-- 工場を選択しOKボタンをクリックしたら各工場のテーブルが表示される -->
-      </div>
-    </div>
-    <div class="system-log" v-if="showLog">
+    <div class="config-table">
       <table>
         <thead>
           <tr>
@@ -36,8 +26,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(row, i) in currentTableData" :key="i">
-            <td :class="{ disabled: row.enabled === '無効' }">{{ row.enabled }}</td>
+          <tr v-for="(row, i) in tableDataMap" :key="i">
+            <!-- <td :class="{ disabled: row.enabled === '無効' }">{{ row.enabled }}</td> -->
+            <td>
+              <label class="toggle-switch">
+                <input
+                  type="checkbox"
+                  :chacked="row.enabled === '有効'"
+                  @change="row.enabled = $event.target.checked ? '有効' : '無効'"
+                />
+                <span class="slider"></span>
+              </label>
+            </td>
             <td>{{ row.no }}</td>
             <td>
               <router-link
@@ -106,21 +106,16 @@
 
 <script>
 export default {
-  name: 'SystemSetting',
+  name: 'ConfigPage',
   data() {
     return {
-      selectedFactory: 'L1',
-      displayFactory: null,
-      factories: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7'],
-      showLog: false,
-      tableDataMap: {
-        L1: [
+      tableDataMap: [
           {
             enabled: '有効',
             no: 1,
-            tag: 'l1_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
+            tag: 'l5_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
             recipeId: 'recipe_id1',
-            camera: 'CAM1',
+            camera: '2SLシューターカメラDS',
             updatedAt: '2025/7/31 0:00',
             createdAt: '2025/7/30 12:00',
             status: '正常'
@@ -129,11 +124,10 @@ export default {
             enabled: '無効',
             no: 2,
             tag: [
-              'l1_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
-              'l1_b_p3 _006 _cam001_テンター入り_framesub_OS_pv'
+              'l5_b_p3 _005 _cam001_テンター入り_framesub_OS_pv'
             ],
             recipeId: 'recipe_id2',
-            camera: 'CAM2',
+            camera: '2SL配管カメラDS',
             updatedAt: '2025/8/1 0:00',
             createdAt: '2025/7/31 12:00',
             status: '無効'
@@ -141,65 +135,14 @@ export default {
           {
             enabled: '有効',
             no: 3,
-            tag: 'l1_b_p3 _005 _cam001_遮断室DS_framesub_OS_pv',
+            tag: 'l5_b_p3 _005 _cam001_遮断室DS_framesub_OS_pv',
             recipeId: 'recipe_id3',
-            camera: 'CAM3',
+            camera: '2SL配管カメラOS',
             updatedAt: '2025/8/1 0:00',
             createdAt: '2025/7/31 12:00',
             status: 'エラー'
           }
-        ],
-        L2: [
-          {
-            enabled: '有効',
-            no: 1,
-            tag: 'l2_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
-            recipeId: 'recipe_id1',
-            camera: 'CAM1',
-            updatedAt: '2025/7/31 0:00',
-            createdAt: '2025/7/30 12:00',
-            status: '正常'
-          },
-          {
-            enabled: '無効',
-            no: 2,
-            tag: 'l2_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
-            recipeId: 'recipe_id2',
-            camera: 'CAM2',
-            updatedAt: '2025/8/1 0:00',
-            createdAt: '2025/7/31 12:00',
-            status: '無効'
-          },
-          {
-            enabled: '有効',
-            no: 3,
-            tag: 'l2_b_p3 _005 _cam001_遮断室DS_framesub_OS_pv',
-            recipeId: 'recipe_id3',
-            camera: 'CAM3',
-            updatedAt: '2025/8/1 0:00',
-            createdAt: '2025/7/31 12:00',
-            status: 'エラー'
-          }
-        ],
-        L3: [],
-        L4: [],
-        L5: [],
-        L6: [],
-        L7: []
-      }
-    }
-  },
-  computed: {
-    currentTableData() {
-      return this.displayFactory
-        ? this.tableDataMap[this.displayFactory] || []
-        : [];
-    }
-  },
-  methods: {
-    onFactoryOk() {
-      this.displayFactory = this.selectedFactory;
-      this.showLog = true;
+        ]
     }
   }
 }
@@ -265,51 +208,24 @@ export default {
   white-space: nowrap;
 }
 
-.select-area {
-  margin-top: 32px;
-  margin-left: 30px;
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.select-label {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  margin-left: 0;
-}
-
-.select-row {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 30px;
-}
-
-select {
-  padding: 6px 16px;
-  font-size: 1rem;
-}
-
 button {
   padding: 4px 10px;
   font-size: 1rem;
   cursor: pointer;
 }
 
-.system-log {
+.config-table {
   margin-top: 40px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.system-log a,
-.system-log a:visited {
+.config-table a,
+.config-table a:visited {
   color: #1976d2;
   text-decoration: underline;
 }
-.system-log a:hover {
+.config-table a:hover {
   text-decoration: underline;
   color: #1256a0;
 }
@@ -324,9 +240,53 @@ th, td {
   padding: 8px;
   text-align: center;
   background: #fff;
+  font-size: 0.9rem;
 }
 
 .disabled {
   color: #aaa;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 22px;
+  transition: .3s;
+}
+
+.toggle-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #4caf50;
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(16px);
 }
 </style>

@@ -6,7 +6,7 @@ import RecipeAdd from '../components/RecipeAdd.vue'
 // import RecipeChange from '../components/RecipeChange.vue'
 import RecipeDelete from '../components/RecipeDelete.vue'
 import SettingDelete from '../components/SettingDelete.vue'
-import SystemSetting from '../components/SystemSetting.vue'
+import ConfigPage from '../components/ConfigPage.vue'
 import SettingEdit from '../components/SettingEdit.vue'
 import SettingHistory from '../components/SettingHistory.vue'
 import TagInfo from '../components/TagInfo.vue'
@@ -15,9 +15,8 @@ import RecipeInfo from '../components/RecipeInfo.vue'
 import SystemLog from '../components/SystemLog.vue'
 import RecipeDB from '../components/RecipeDB.vue'
 import TagControl from '../components/TagControl.vue'
-import SettingAdd from '../components/SettingAdd.vue'
+import ConfigAdd from '../components/ConfigAdd.vue'
 import TagHistory from '../components/TagHistory.vue'
-// import TagChange from '../components/TagChange.vue'
 import TagDelete from '../components/TagDelete.vue'
 import ApprovalList from '../components/ApprovalList.vue'
 
@@ -29,7 +28,7 @@ const routes = [
     component: SettingDelete,
     props: route => ({ no: route.params.no, tag: route.params.tag, camera: route.params.camera, recipeId: route.params.recipeId })
    },
-  { path: '/setting', component: SystemSetting },
+  { path: '/configPage', component: ConfigPage },
   {
     path: '/settingEdit/:no/:tag/:camera/:recipeId',
     name: 'SettingEdit',
@@ -61,7 +60,7 @@ const routes = [
   // { path: '/recipeDB/recipeChange', component: RecipeChange },
   { path: '/recipeDB/recipeDelete', component: RecipeDelete },
   { path: '/tag', component: TagControl },
-  { path: '/settingAdd', component: SettingAdd },
+  { path: '/configAdd', component: ConfigAdd },
   { path: '/settingHistory', component: SettingHistory },
   { path: '/tag/history', component: TagHistory },
   // { path: '/tag/change', component: TagChange },

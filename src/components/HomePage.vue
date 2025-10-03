@@ -9,7 +9,7 @@
   <div class="content-area">
     <div class="sidebar">
       <div class="menu">
-        <router-link to="/setting" class="menu-item-link">
+        <router-link to="/configPage" class="menu-item-link">
           <button class="menu-item">
             <img src="@/assets/setting_icon.png" alt="処理構成" />
             <span>処理構成</span>

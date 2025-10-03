@@ -84,7 +84,7 @@
 
 <script>
 export default {
-  name: 'SettingAdd' ,
+  name: 'ConfigAdd' ,
   data() {
     return {
       selectedCamera: '',
