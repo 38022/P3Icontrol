@@ -1,14 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
-// import RecipeControl from '../components/RecipeControl.vue'
 import RecipeAdd from '../components/RecipeAdd.vue'
-// import RecipeHistory from '../components/RecipeHistory.vue'
-// import RecipeChange from '../components/RecipeChange.vue'
 import RecipeDelete from '../components/RecipeDelete.vue'
-import SettingDelete from '../components/SettingDelete.vue'
+import ConfigDelete from '../components/ConfigDelete.vue'
 import ConfigPage from '../components/ConfigPage.vue'
-import SettingEdit from '../components/SettingEdit.vue'
-import SettingHistory from '../components/SettingHistory.vue'
+import ConfigEdit from '../components/ConfigEdit.vue'
+import ConfigHistory from '../components/ConfigHistory.vue'
 import TagInfo from '../components/TagInfo.vue'
 import CameraInfo from '../components/CameraInfo.vue'
 import RecipeInfo from '../components/RecipeInfo.vue'
@@ -22,19 +19,20 @@ import ApprovalList from '../components/ApprovalList.vue'
 
 const routes = [
   { path: '/', component: HomePage },
-  // { path: '/recipe', component: RecipeControl },
-  { path: '/settingDelete/:no/:tag/:camera/:recipeId',
-    name: 'SettingDelete',
-    component: SettingDelete,
+  { path: '/configDelete/:no/:tag/:camera/:recipeId',
+    name: 'ConfigDelete',
+    component: ConfigDelete,
     props: route => ({ no: route.params.no, tag: route.params.tag, camera: route.params.camera, recipeId: route.params.recipeId })
    },
   { path: '/configPage', component: ConfigPage },
   {
-    path: '/settingEdit/:no/:tag/:camera/:recipeId',
-    name: 'SettingEdit',
-    component: SettingEdit,
+    path: '/configEdit/:no/:tag/:camera/:recipeId',
+    name: 'ConfigEdit',
+    component: ConfigEdit,
     props: route => ({ no: route.params.no, tag: route.params.tag, camera: route.params.camera, recipeId: route.params.recipeId })
   },
+  { path: '/configAdd', component: ConfigAdd },
+  { path: '/configHistory', component: ConfigHistory },
   {
     path: '/taginfo/:tag/:camera/:recipeId',
     name: 'TagInfo',
@@ -55,15 +53,10 @@ const routes = [
   },
   { path: '/log', component: SystemLog },
   { path: '/recipeDB', component: RecipeDB },
-  // { path: '/recipeDB/recipeHistory', component: RecipeHistory },
   { path: '/recipeDB/recipeAdd', component: RecipeAdd },
-  // { path: '/recipeDB/recipeChange', component: RecipeChange },
   { path: '/recipeDB/recipeDelete', component: RecipeDelete },
   { path: '/tag', component: TagControl },
-  { path: '/configAdd', component: ConfigAdd },
-  { path: '/settingHistory', component: SettingHistory },
   { path: '/tag/history', component: TagHistory },
-  // { path: '/tag/change', component: TagChange },
   { path: '/tag/delete', component: TagDelete },
   { path: '/approval', component: ApprovalList }
 ]

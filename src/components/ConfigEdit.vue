@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-edit-page">
+  <div class="config-edit-page">
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成の編集</h2>
@@ -9,7 +9,7 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <router-link to="/setting">システム設定</router-link>
+      <router-link to="/config">処理構成</router-link>
       <span> &gt;</span>
       <span>処理構成の編集</span>
     </nav>
@@ -60,7 +60,7 @@
 
 <script>
 export default {
-  name: 'SettingEdit',
+  name: 'ConfigEdit',
   data() {
     return {
       selectedRecipe: '',
@@ -120,7 +120,7 @@ export default {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
-.setting-edit-page {
+.config-edit-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;

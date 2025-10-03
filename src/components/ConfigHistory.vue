@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-history-page">
+  <div class="config-history-page">
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成の編集履歴</h2>
@@ -9,7 +9,7 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <router-link to="/setting">システム設定</router-link>
+      <router-link to="/config">処理構成</router-link>
       <span> &gt;</span>
       <span>処理構成の編集履歴</span>
     </nav>
@@ -42,40 +42,40 @@
 
 <script>
 export default {
-  name: 'SettingHistory',
+  name: 'ConfigHistory',
   data() {
     return {
       historyList: [
         {
           no: '1',
           date: '2025/08/01 12:00',
-          camera: 'CAM1',
+          camera: '2SLシューターカメラDS',
           recipeId: 'recipe_id3',
-          tag: 'l1_b_p3_005_cam001_テンター出ツレ_framesub_OS_pv',
+          tag: 'l1_b_p3_005_cam001_2SLシューターカメラDS_framesub_DS_pv',
           name: '***'
         },
         {
           no: '2',
           date: '2025/07/31 12:00',
-          camera: 'CAM2',
+          camera: '2SL配管カメラDS',
           recipeId: 'recipe_id4',
-          tag: 'l1_b_p3_005_cam002_テンター出ツレ_framesub_OS_pv',
+          tag: 'l1_b_p3_005_cam002_2SL配管カメラDS_framesub_DS_pv',
           name: '***'
         },
         {
           no: '3',
           date: '2025/07/21 12:00',
-          camera: 'CAM3',
+          camera: '2SL配管カメラOS',
           recipeId: 'recipe_id5',
-          tag: 'l1_b_p3_005_cam003_テンター出ツレ_framesub_OS_pv',
+          tag: 'l1_b_p3_005_cam003_2SL配管カメラOS_framesub_OS_pv',
           name: '***'
         },
         {
           no: '4',
           date: '2025/07/20 12:00',
-          camera: 'CAM4',
+          camera: 'SL3配管DS',
           recipeId: 'recipe_id6',
-          tag: 'l1_b_p3_005_cam004_テンター出ツレ_framesub_OS_pv',
+          tag: 'l1_b_p3_005_cam004_SL3配管DS_framesub_DS_pv',
           name: '***'
         },
         // 必要に応じて追加
@@ -101,7 +101,7 @@ export default {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
-.setting-history-page {
+.config-history-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;

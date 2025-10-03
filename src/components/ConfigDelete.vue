@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-delete-page">
+  <div class="config-delete-page">
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成の削除</h2>
@@ -9,7 +9,7 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <router-link to="/setting">システム設定</router-link>
+      <router-link to="/config">システム設定</router-link>
       <span> &gt;</span>
       <span>処理構成の削除</span>
     </nav>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'SettingDelete',
+  name: 'ConfigDelete',
   // data() {
   //   return {
   //     recipesList: ['テンター出ツレ'],
@@ -81,7 +81,7 @@ export default {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
-.setting-delete-page {
+.config-delete-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;

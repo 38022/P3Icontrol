@@ -9,7 +9,7 @@
     <nav class="breadcrumb">
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
-      <router-link to="/setting">システム設定</router-link>
+      <router-link to="/config">処理構成</router-link>
       <span> &gt;</span>
       <span>カメラ情報</span>
     </nav>

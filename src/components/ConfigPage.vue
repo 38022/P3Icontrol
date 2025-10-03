@@ -1,5 +1,5 @@
 <template>
-  <div class="system-setting-page">
+  <div class="config-page">
     <div class="header">
       <div class="title-row">
         <h2 class="title">処理構成</h2>
@@ -76,7 +76,7 @@
             <td>{{ row.status }}</td>
             <td>
               <router-link
-              :to="{ name: 'SettingEdit',
+              :to="{ name: 'ConfigEdit',
               params: { no: row.no,
               camera: encodeURIComponent(row.camera),
               tag: encodeURIComponent(row.tag),
@@ -84,7 +84,7 @@
               } }">編集</router-link>
             </td>
             <td>
-              <router-link :to="{ name: 'SettingDelete',
+              <router-link :to="{ name: 'ConfigDelete',
               params: { no: row.no,
               camera: encodeURIComponent(row.camera),
               tag: encodeURIComponent(row.tag),
@@ -92,12 +92,12 @@
               } }">削除</router-link>
             </td>
             <td>
-              <router-link to="/settingHistory">編集履歴</router-link>
+              <router-link to="/configHistory">編集履歴</router-link>
             </td>
           </tr>
         </tbody>
       </table>
-      <router-link to="/settingAdd">
+      <router-link to="/configAdd">
         <button>追加</button>
       </router-link>
     </div>
@@ -164,7 +164,7 @@ export default {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
-.system-setting-page {
+.config-page {
   min-height: 100vh;
   background: #f7f7f7;
   display: flex;
