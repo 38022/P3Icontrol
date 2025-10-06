@@ -10,18 +10,8 @@
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
       <span>タグ操作</span>
-    </nav>  
-    <div class="select-factory">
-      <label class="select-label" for="factor-select">工場を選択</label>
-      <div class="select-row">
-        <select id="factory-select" v-model="selectedFactory">
-          <option v-for="factory in factories" :key="factory" :value="factory">{{ factory }}</option>
-        </select>
-        <button @click="onFactoryOk">OK</button>
-        <!-- 工場を選択しOKボタンをクリックしたら各工場のテーブルが表示される -->
-      </div>
-    </div>    
-    <div class="tag-log" v-if="showLog">
+    </nav>   
+    <div class="tag-log">
       <table>
         <thead>
           <tr>
@@ -62,41 +52,31 @@ export default {
   name: 'TagControl',
   data() {
     return {
-      selectedFactory: 'L1',
-      displayFactory: null,
-      factories: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7'],
-      showLog: false,
       tagList: [
         {
           no: '1',
-          tag: 'l1_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
+          tag: 'l5_b_p3 _005 _cam001_テンター出ツレ_framesub_OS_pv',
           camera: 'CAM1',
           editDate: '2025/08/01 12:00',
           createDate: '2025/07/22 12:00'
         },
         {
           no: '2',
-          tag: 'l1_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
+          tag: 'l5_b_p3 _005 _cam001_テンター入り_framesub_OS_pv',
           camera: 'CAM2',
           editDate: '2025/08/01 12:00',
           createDate: '2025/07/22 12:00'
         },
         {
           no: '3',
-          tag: 'l1_b_p3 _006 _cam001_テンター入り_framesub_OS_pv',
+          tag: 'l5_b_p3 _006 _cam001_テンター入り_framesub_OS_pv',
           camera: null,
           editDate: '2025/08/01 12:00',
           createDate: '2025/07/22 12:00'
         }
       ]
       }
-    },
-  methods: {
-    onFactoryOk() {
-      this.displayFactory = this.selectedFactory;
-      this.showLog = true;
     }
-  }
 }
 </script>
 

@@ -10,18 +10,8 @@
       <router-link to="/">ホーム</router-link>
       <span> &gt;</span>
       <span>レシピDB操作</span>
-    </nav>
-    <div class="select-factory">
-      <label class="select-label" for="factor-select">工場を選択</label>
-      <div class="select-row">
-        <select id="factory-select" v-model="selectedFactory">
-          <option v-for="factory in factories" :key="factory" :value="factory">{{ factory }}</option>
-        </select>
-        <button @click="onFactoryOk">OK</button>
-        <!-- 工場を選択しOKボタンをクリックしたら各工場のテーブルが表示される -->
-      </div>
-    </div>    
-    <div class="recipe-log" v-if="showLog">
+    </nav>   
+    <div class="recipe-log">
       <table>
         <thead>
           <tr>
@@ -70,10 +60,6 @@ export default {
   name: 'RecipeDB',
   data() {
     return {
-      selectedFactory: 'L1',
-      displayFactory: null,
-      factories: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7'],
-      showLog: false,
       recipeList: [
         {
           no: '1',
@@ -98,12 +84,6 @@ export default {
         }
       ]
       }
-    },
-  methods: {
-    onFactoryOk() {
-      this.displayFactory = this.selectedFactory;
-      this.showLog = true;
-    }
   }
 }
 </script>
