@@ -46,15 +46,15 @@ export default {
           date: '2025/08/01 12:00',
           camera: 'CAM1',
           recipeId: 'recipe_id3',
-          tag: 'l1_b_p3_005_cam001_テンター出ツレ_framesub_OS_pv',
-          error: '-1'
+          tag: 'l5_b_p3_005_cam001_テンター出ツレ_framesub_OS_pv',
+          error: '-1:接続エラー'
         },
         {
           date: '2025/08/01 13:00',
           camera: 'CAM4',
           recipeId: 'recipe_id6',
-          tag: 'l1_b_p3_005_cam004_テンター入り_framesub_OS_pv',
-          error: '-12'
+          tag: 'l5_b_p3_005_cam004_テンター入り_framesub_OS_pv',
+          error: '-12:画像処理失敗'
         }
         // 必要に応じて追加
       ]
